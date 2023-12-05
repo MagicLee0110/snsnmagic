@@ -54,19 +54,41 @@
     .profile-info p {
       line-height: 1.6;
     }
-    .pagination-indicator {
+    .navigation {
       position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 200px;
+    }
+    .navigation button {
       background-color: rgba(0, 0, 0, 0.5);
       color: #fff;
+      padding: 10px 20px;
       border-radius: 5px;
-      display: none;
-      z-index: 999;
-      transition: opacity 0.5s;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
     }
+    .navigation button:hover {
+      opacity: 1;
+    }
+    /* 保留的原有圖片效果 */
+    .profile-img {
+      position: absolute;
+      top: 350px; /* 向下調整 X 像素 */
+      left: 200px; /* 向右調整 Y 像素 */
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      /* 調整圖片大小 */
+      width: 250px; /* 調整圖片寬度 */
+      height: auto; /* 讓高度根據寬度自適應 */
+      z-index: 9999;  /* 讓照片在最上層 */
+    }
+    /* 保留的第二頁按鈕效果 */
     .flex-container {
       display: flex;
       flex-wrap: wrap;
@@ -92,21 +114,6 @@
     .link-box a:hover {
       background-color: #333;
     }
-    .profile-info {
-      position: relative;
-      text-align: left;
-    }
-  .profile-img {
-    position: absolute;
-    top: 350px; /* 向下調整 X 像素 */
-    left: 200px; /* 向右調整 Y 像素 */
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    /* 調整圖片大小 */
-    width: 250px; /* 調整圖片寬度 */
-    height: auto; /* 讓高度根據寬度自適應 */
-    z-index: 9999;  /* 讓照片在最上層 */
-  }
   </style>
 </head>
 <body>
@@ -114,12 +121,12 @@
     <h1>魔術師森森的魔幻空間</h1>
   </header>
   <main>
-<!-- 第一頁 - 個人介紹 -->
-<div class="page active">
-  <!-- 插入個人照片 -->
-  <div class="profile-info">
-    <img class="profile-img" src="個人照.jpg" alt="個人照片">
-    <h2>魔術師森森</h2>
+    <!-- 第一頁 - 個人介紹 -->
+    <div class="page active">
+      <!-- 插入個人照片 -->
+      <div class="profile-info">
+        <img class="profile-img" src="個人照.jpg" alt="個人照片">
+        <h2>魔術師森森</h2>
     <p>
       經歷:<br>
       朝陽魔術社第九屆教學長<br>
@@ -144,42 +151,46 @@
               <br>
               <br>
     </p>
-  </div>
-</div>
-<!-- 第二頁 - 分類連結 -->
-<div class="page">
-  <h2>選擇您想了解的內容</h2>
-  <div class="flex-container">
-    <div class="link-box">
-      <a href="contact.html">聯絡我們</a>
+      </div>
     </div>
-    <div class="link-box">
-      <a href="booking.html">表演預約</a>
+
+    <!-- 第二頁 - 分類連結 -->
+    <div class="page">
+      <h2>選擇您想了解的內容</h2>
+      <div class="flex-container">
+        <div class="link-box">
+          <a href="contact.html">聯絡我們</a>
+        </div>
+        <div class="link-box">
+          <a href="booking.html">表演預約</a>
+        </div>
+        <div class="link-box">
+          <a href="mindreading.html">讀心體驗</a>
+        </div>
+        <div class="link-box">
+          <a href="other.html">其他</a>
+        </div>
+      </div>
     </div>
-    <div class="link-box">
-      <a href="mindreading.html">讀心體驗</a>
+
+    <!-- 第三頁 -->
+    <div class="page">
+      <h2>關於更多的我....</h2>
+      <!-- 這裡放關於您的其他文章內容 -->
     </div>
-    <div class="link-box">
-      <a href="other.html">其他</a>
-    </div>
-  </div>
-</div>
-<!-- 第三頁 -->
-<div class="page">
-  <h2>關於更多的我....</h2>
-  <!-- 這裡放關於您的其他文章內容 -->
-</div>
- 
-    <!-- 翻頁指示 -->
-    <div class="pagination-indicator">
-      往左滑動翻頁
+    
+    <!-- 翻頁按鈕 -->
+    <div class="navigation">
+      <button id="prevPageButton" style="display: none;">上一頁</button>
+      <button id="nextPageButton" style="display: none;">下一頁</button>
     </div>
   </main>
 
   <script>
-    // JavaScript 代碼用於控制頁面切換
     const pages = document.querySelectorAll('.page');
     let currentPage = 0;
+    const prevPageButton = document.getElementById('prevPageButton');
+    const nextPageButton = document.getElementById('nextPageButton');
 
     function showPage(pageNumber) {
       for (let i = 0; i < pages.length; i++) {
@@ -189,30 +200,32 @@
           pages[i].classList.remove('active');
         }
       }
+      prevPageButton.style.display = pageNumber === 0 ? 'none' : 'block';
+      nextPageButton.style.display = pageNumber === pages.length - 1 ? 'none' : 'block';
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    function goToPrevPage() {
+      currentPage = Math.max(0, currentPage - 1);
       showPage(currentPage);
+    }
 
-      document.addEventListener('keydown', function (event) {
-        if (event.key === 'ArrowRight') {
-          currentPage = (currentPage + 1) % pages.length;
-        } else if (event.key === 'ArrowLeft') {
-          currentPage = (currentPage - 1 + pages.length) % pages.length;
-        }
+    function goToNextPage() {
+      currentPage = Math.min(pages.length - 1, currentPage + 1);
+      showPage(currentPage);
+    }
 
-        showPage(currentPage);
-      });
+    prevPageButton.addEventListener('click', goToPrevPage);
+    nextPageButton.addEventListener('click', goToNextPage);
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowRight') {
+        goToNextPage();
+      } else if (event.key === 'ArrowLeft') {
+        goToPrevPage();
+      }
     });
 
-    // 顯示翻頁指示
-    const indicator = document.querySelector('.pagination-indicator');
-    indicator.style.display = 'block';
-
-    // 隱藏翻頁指示（當使用者開始瀏覽時）
-    document.addEventListener('touchstart', function() {
-      indicator.style.display = 'none';
-    });
+    showPage(currentPage);
   </script>
 </body>
 </html>
