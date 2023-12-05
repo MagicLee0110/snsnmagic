@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>魔術師森森的魔幻空間</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 樣式美化 */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1f1f1f;
+      color: #ccc;
+      transition: background-color 0.5s;
+    }
+    header {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: background-color 0.5s;
+    }
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+    .page {
+      display: none;
+      transition: opacity 0.5s;
+      opacity: 0;
+    }
+    .active {
+      display: block;
+      opacity: 1;
+    }
+    .profile-info {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      background-color: #2f2f2f;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      transition: transform 0.5s, box-shadow 0.5s;
+      transform: translateY(20px);
+    }
+    .profile-info h2 {
+      color: #fff;
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .profile-info p {
+      line-height: 1.6;
+    }
+    .pagination-indicator {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border-radius: 5px;
+      display: none;
+      z-index: 999;
+      transition: opacity 0.5s;
+    }
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+    .link-box {
+      width: calc(50% - 20px);
+      background-color: #2f2f2f;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      transition: transform 0.5s, box-shadow 0.5s;
+    }
+    .link-box a {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .link-box a:hover {
+      background-color: #333;
+    }
+    .profile-info {
+      position: relative;
+      text-align: left;
+    }
+  .profile-img {
+    position: absolute;
+    top: 100px; /* 向下調整 X 像素 */
+    left: 400px; /* 向右調整 Y 像素 */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    /* 調整圖片大小 */
+    width: 200px; /* 調整圖片寬度 */
+    height: auto; /* 讓高度根據寬度自適應 */
+    z-index: 9999;  /* 讓照片在最上層 */
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>魔術師森森的魔幻空間</h1>
+  </header>
+  <main>
+<!-- 第一頁 - 個人介紹 -->
+<div class="page active">
+  <!-- 插入個人照片 -->
+  <div class="profile-info">
+    <img class="profile-img" src="個人照.jpg" alt="個人照片">
+    <h2>魔術師森森</h2>
+    <p>
+      經歷:<br>
+      朝陽魔術社第九屆教學長<br>
+      朝陽魔術社第十屆社長<br>
+      朝陽魔術社心靈魔術講座講師<br>
+      中興大學魔術社心靈魔術講座講師<br>
+      勤益科技大學魔術社心靈魔術講座講師<br>
+      曾於飯店、壽司店、燒烤店擔任桌邊魔術師<br>
+      <br>
+      擅長表演項目:<br>
+      近距離延桌表演<br>
+      心靈魔術表演<br>
+    </p>
+  </div>
+</div>
+<!-- 第二頁 - 分類連結 -->
+<div class="page">
+  <h2>選擇您想了解的內容</h2>
+  <div class="flex-container">
+    <div class="link-box">
+      <a href="contact.html">聯絡我們</a>
+    </div>
+    <div class="link-box">
+      <a href="booking.html">表演預約</a>
+    </div>
+    <div class="link-box">
+      <a href="mindreading.html">讀心體驗</a>
+    </div>
+    <div class="link-box">
+      <a href="other.html">其他</a>
+    </div>
+  </div>
+</div>
+<!-- 第三頁 -->
+<div class="page">
+  <h2>關於更多的我....</h2>
+  <!-- 這裡放關於您的其他文章內容 -->
+</div>
+ 
+    <!-- 翻頁指示 -->
+    <div class="pagination-indicator">
+      往左滑動翻頁
+    </div>
+  </main>
+
+  <script>
+    // JavaScript 代碼用於控制頁面切換
+    const pages = document.querySelectorAll('.page');
+    let currentPage = 0;
+
+    function showPage(pageNumber) {
+      for (let i = 0; i < pages.length; i++) {
+        if (i === pageNumber) {
+          pages[i].classList.add('active');
+        } else {
+          pages[i].classList.remove('active');
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      showPage(currentPage);
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowRight') {
+          currentPage = (currentPage + 1) % pages.length;
+        } else if (event.key === 'ArrowLeft') {
+          currentPage = (currentPage - 1 + pages.length) % pages.length;
+        }
+
+        showPage(currentPage);
+      });
+    });
+
+    // 顯示翻頁指示
+    const indicator = document.querySelector('.pagination-indicator');
+    indicator.style.display = 'block';
+
+    // 隱藏翻頁指示（當使用者開始瀏覽時）
+    document.addEventListener('touchstart', function() {
+      indicator.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
