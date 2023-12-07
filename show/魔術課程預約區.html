@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>魔術師森森的魔幻空間</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* CSS 樣式 */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1f1f1f;
+      color: #ccc;
+      transition: background-color 0.5s;
+    }
+    header {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: background-color 0.5s;
+    }
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+    .page {
+      display: none;
+      transition: opacity 0.5s;
+      opacity: 0;
+    }
+    .active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* 保留的原有圖片效果 */
+    .profile-img {
+      /* 保留原有的樣式 */
+    }
+
+    /* 保留的第二頁按鈕效果 */
+    .flex-container {
+      /* 保留原有的樣式 */
+    }
+
+    /* 新增的表格樣式 */
+    .profile-info {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      background-color: #2f2f2f;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      transition: transform 0.5s, box-shadow 0.5s;
+      transform: translateY(20px);
+      margin-bottom: 20px; /* 新增間距 */
+    }
+    .profile-info h2 {
+      color: #fff;
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .profile-info p {
+      line-height: 1.6;
+    }
+    /* 預約按鈕樣式 */
+    .profile-info button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      margin-top: 10px;
+    }
+    .profile-info button:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>服務項目</h1>
+  </header>
+  <main>
+    <div class="page active">
+      <div class="profile-info">
+        <h2>魔術入門-初學魔術的十堂課</h2>
+        <p>簡介: 本堂課適合初學魔術者，森森將帶你一探究竟魔術的世界，一同欣賞魔術的色彩，學完十堂課後，你將彷彿擁有超能力般，可於周遭朋友大展身手，讓大家為你為刮目相看! 另外，此堂課也非常適合想讓小孩子學才藝的家長，在學魔術的同時可以學到非常多領域相關的知識，數學、物理、化學、心理學、哲學等等，對於孩子學習有相當大的幫助呦!</p>
+        <p>教學方式: 1對1教學。</p>
+        <p>適合對象: 初學者。</p>
+        <p>適合年齡: 10歲以上。</p>
+        <p>適合場合: 家裡、咖啡廳、教室等。</p>
+        <p>課堂時間: 1小時/堂。</p>
+        <p>價格:$800/堂，$6500/十堂。</p>
+        <!-- 預約按鈕 -->
+        <button onclick="openBookingForm('YOUR_BOOKING_LINK_1')">我想預約</button>
+      </div>
+      
+      <div class="profile-info">
+        <h2>神秘領域-心靈魔術課程</h2>
+        <p>簡介: 心靈魔術為心靈魔術中非常神秘的領域，預言術、催眠術、暗示術、讀心術皆為心靈魔術之範疇，與一般魔術不同的是，心靈魔術沒有華麗的視覺效果，但卻能夠在人們的心中產生大大的震撼及感動，也因為如此的魅力，讓森森對於心靈為術為之著迷，瘋狂研究，在這裡，森森將帶你進入心靈魔術的世界，一窺心靈魔術的風采。</p>
+        <p>教學方式: 1對1教學。</p>
+        <p>適合對象: 具備基本魔術技巧者。</p>
+        <p>適合年齡: 18歲以上。</p>
+        <p>適合場合: 家裡、咖啡廳、教室等。</p>
+        <p>課堂時間: 1小時/堂。</p>
+        <p>價格:$1200/堂</p>
+        <!-- 預約按鈕 -->
+        <button onclick="openBookingForm('YOUR_BOOKING_LINK_2')">我想預約</button>
+      </div>
+
+      <div class="profile-info">
+        <h2>各學校社團魔術課</h2>
+        <p>簡介: 社團為學校不可或缺的元素、學生課外活動的重心，能為學生能在學習成長中增添色彩，當然，找一位好的社團課程老師，不僅能讓學生更正向學習，還能更有利於學生培養興趣及自我文學素養，在社團課程中，森森將會用對於魔術專業的認知及精闢的理解，一步一步帶領學生認識魔術，用魔術認識世界!</p>
+        <p>教學方式: 1對多教學。</p>
+        <p>適合對象: 國小、國中、高中、大學社團。</p>
+        <p>適合年齡: 不限。</p>
+        <p>適合場合: 教室。</p>
+        <p>課堂時間: 1~2小時/堂。</p>
+        <p>價格:$800/小時</p>
+        <!-- 預約按鈕 -->
+        <button onclick="openBookingForm('YOUR_BOOKING_LINK_2')">我想預約</button>
+      </div>
+
+    <!-- JavaScript 代碼 -->
+    <script>
+      // 彈出預約表單的函數
+      function openBookingForm(bookingLink) {
+        window.open(bookingLink, '_blank', 'width=600,height=400');
+      }
+    </script>
+  </main>
+
+  <!-- 頁腳 -->
+  <footer style="text-align: center; margin-top: 20px;">
+    <p>©魔術師森森的魔幻空間</p>
+    <br>
+  </footer>
+</body>
+</html>
