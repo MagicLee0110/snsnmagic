@@ -210,17 +210,20 @@
     const prevPageButton = document.getElementById('prevPageButton');
     const nextPageButton = document.getElementById('nextPageButton');
 
-    function showPage(pageNumber) {
-      for (let i = 0; i < pages.length; i++) {
-        if (i === pageNumber) {
-          pages[i].classList.add('active');
-        } else {
-          pages[i].classList.remove('active');
-        }
-      }
-      prevPageButton.style.display = pageNumber === 0 ? 'none' : 'block';
-      nextPageButton.style.display = pageNumber === pages.length - 1 ? 'none' : 'block';
+function showPage(pageNumber) {
+  for (let i = 0; i < pages.length; i++) {
+    if (i === pageNumber) {
+      pages[i].classList.add('active');
+    } else {
+      pages[i].classList.remove('active');
     }
+  }
+  document.body.scrollIntoView({ behavior: 'smooth', block: 'start' }); // 将整个页面滚动到顶部
+  prevPageButton.style.display = pageNumber === 0 ? 'none' : 'block';
+  nextPageButton.style.display = pageNumber === pages.length - 1 ? 'none' : 'block';
+}
+
+
 
     function goToPrevPage() {
       currentPage = Math.max(0, currentPage - 1);
