@@ -55,7 +55,8 @@
       line-height: 1.6;
     }
     .navigation {
-      position: fixed;
+      position: relative;
+      top: 50px; /* 向下移動 50px */
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
@@ -63,19 +64,26 @@
       justify-content: space-between;
       width: 200px;
     }
-    .navigation button {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-    .navigation button:hover {
-      opacity: 1;
-    }
+.navigation button {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  border: 2px solid #fff; /* 預設的白色邊框 */
+  cursor: pointer;
+  opacity: 0.9;
+  transition: transform 0.3s, opacity 0.3s ease, box-shadow 0.3s; /* 添加過渡效果 */
+  font-size: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100px; /* 指定寬度 */
+  height: 50px; /* 指定高度 */
+}
+
+.navigation button:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+}
     /* 保留的原有圖片效果 */
     .profile-img {
       position: absolute;
