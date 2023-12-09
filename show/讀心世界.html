@@ -229,6 +229,9 @@ input[type="radio"]+label {
         <input type="button" class="next-button" value="繼續" onclick="showNextQuestion()">
         <input type="button" class="calculate-button" value="查看讀心結果" onclick="calculateAnswer()" style="display: none;">
         <input type="button" class="start-button" value="提交" onclick="checkAnswer()" style="display: none;">
+    </div>
+
+    <div class="result-container" style="display: none;">
         <div class="result" id="result"></div>
     </div>
 
@@ -321,6 +324,11 @@ function showNextQuestion() {
                     z=32; e=a+b+c+x+y+z;
                 } 
 		result ="我讀出來了<br/>你想的數字是:" + e + "!!!";
+                document.querySelector(".result-container").style.display = "block";
+                document.getElementById("result").innerHTML = result;
+                document.querySelector(".calculate-button").style.display = "none";
+                document.getElementById("game-section").style.display = "none";
+  
 		
             } else {
                 result = "請回答所有問題";
