@@ -224,6 +224,17 @@
         <!-- 點擊進入 -->
 <button onclick="openBookingForm('讀心世界.html')">點擊進入</button>
       </div>
+
+      <div class="profile-info2">
+        <h2>魔術名稱:暗示術</h2>
+        <p>簡介: 我將透過暗示術，一步一步引導你，讓你和我想到一樣的東西。</p>
+        <p>魔術類型: 心靈魔術。</p>
+        <p>適合對象: 所有年齡層。</p>
+        <p>遊玩時間: 1~2分鐘。</p>
+        <!-- 點擊進入 -->
+<button onclick="openBookingForm('暗示世界.html')">點擊進入</button>
+      </div>
+
     </div>
     
     <!-- 翻頁按鈕 -->
@@ -283,7 +294,7 @@ function showPage(pageNumber) {
   function openBookingForm(pageUrl) {
     window.location.href = pageUrl; // 跳转到指定的页面
   }
-    // 阻止 F12 開發者工具
+// 阻止 F12 開發者工具
 document.addEventListener("keydown", function (e) {
     if (e.keyCode == 123) {
         e.preventDefault();
