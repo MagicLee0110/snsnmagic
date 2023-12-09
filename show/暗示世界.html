@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>神秘網頁介紹</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #272727;
+      color: #fff;
+      text-align: center;
+    }
+
+    .content {
+      max-width: 80%;
+      margin: 0 auto;
+      padding: 60px 40px;
+      background-color: rgba(39, 39, 39, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .item-box {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 20px;
+    }
+
+    .item {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      padding: 10px 20px;
+      margin: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-5px);
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px 30px; /* Increased padding */
+      font-size: 18px;
+      background-color: #8c52ff;
+      color: #fff;
+      border: 2px solid #8c52ff;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 10px; /* Increased distance from the bottom */
+    }
+
+    button:hover {
+      background-color: #662db8;
+      border-color: #662db8;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="content">
+  <p id="introText">歡迎來到暗示世界</br>待會你將會一步一步的受到我的暗示</br>最終將會選到我想要你選的物品</br>現在，幫我腦袋放空，什麼都不要想，深呼吸三次</br>好了之後就按下開始吧!</p>
+
+  <!-- Container for first set of items -->
+  <div id="items1" class="hidden">
+  <p>首先，用你的直覺從以下物品中挑選一樣，並記住，好了之後按繼續</p>
+    <div class="item-box">
+      <div class="item">菸</div>
+      <div class="item">教練</div>
+      <div class="item">冰淇淋</div>
+      <div class="item">蠟燭</div>
+      <div class="item">酸味</div>
+      <div class="item">球鞋</div>
+      <div class="item">維他命</div>
+      <div class="item">防曬乳</div>
+    </div>
+   </br>
+  </div>
+
+  <div id="items2" class="hidden">
+  <p>再來，用你的直覺從以下物品中挑選一樣跟剛剛選的物品最相近的，並改成記住這樣東西，好了之後按繼續</p>
+    <div class="item-box">
+      <div class="item">夏天</div>
+      <div class="item">橘子</div>
+      <div class="item">望遠鏡</div>
+      <div class="item">火</div>
+      <div class="item">籃球</div>
+      <div class="item">太空</div>
+      <div class="item">保險</div>
+      <div class="item">地震</div>
+    </div>
+   </br>
+  </div>
+  <div id="items3" class="hidden">
+  <p>再來，用你的直覺從以下物品中挑選一樣跟剛剛記住的詞最相近的，並改成記住這樣東西，好了之後按繼續</p>
+    <div class="item-box">
+      <div class="item">三角形</div>
+      <div class="item">圓形</div>
+      <div class="item">熱</div>
+      <div class="item">馬桶</div>
+      <div class="item">老鼠</div>
+      <div class="item">機器人</div>
+      <div class="item">衛生紙</div>
+      <div class="item">滑鼠</div>
+    </div>
+   </br>
+  </div>
+
+  <div id="items4" class="hidden">
+  <p>最後，用你的直覺從以下物品中挑選一樣跟剛剛記住的詞最相近的東西，並想像你正看著這樣東西，好了之後按繼</p>
+    <div class="item-box">
+      <div class="item">撲克牌</div>
+      <div class="item">太陽</div>
+      <div class="item">牙刷</div>
+      <div class="item">衣架</div>
+      <div class="item">手機</div>
+      <div class="item">吉他</div>
+      <div class="item">剪刀</div>
+      <div class="item">筆記本</div>
+    </div>
+   </br>
+  </div>
+
+
+  <p id="paragraph5" class="hidden">你會看見"太陽"。</p>
+
+  <button id="startButton">開始</button>
+  <button id="continueButton" class="hidden">繼續</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const startButton = document.getElementById('startButton');
+    const continueButton = document.getElementById('continueButton');
+    const introText = document.getElementById('introText');
+    
+    const itemContainers = [
+      document.getElementById('items1'),
+      document.getElementById('items2'), // Add other item container IDs here as needed
+      document.getElementById('items3'), // Add other item container IDs here as needed
+      document.getElementById('items4'), // Add other item container IDs here as needed
+      document.getElementById('paragraph5'), // Add other item container IDs here as needed
+    ];
+
+    let currentIndex = 0;
+
+    startButton.addEventListener('click', () => {
+      introText.style.display = 'none';
+      startButton.style.display = 'none';
+      continueButton.style.display = 'block';
+      showItems(currentIndex);
+    });
+
+    continueButton.addEventListener('click', () => {
+      currentIndex++;
+      if (currentIndex < itemContainers.length) {
+        showItems(currentIndex);
+      }
+      if (currentIndex === itemContainers.length - 1) {
+        continueButton.style.display = 'none';
+      }
+    });
+
+    function showItems(index) {
+      itemContainers.forEach((container, i) => {
+        if (i === index) {
+          container.classList.remove('hidden');
+        } else {
+          container.classList.add('hidden');
+        }
+      });
+    }
+  });
+// 阻止 F12 開發者工具
+document.addEventListener("keydown", function (e) {
+    if (e.keyCode == 123) {
+        e.preventDefault();
+        alert("此網頁禁止使用F12");
+        }
+    });
+
+// 禁用右鍵點擊
+document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        alert("此網頁禁止使用右鍵");
+    });
+
+// 禁用 Ctrl+U 組合鍵
+document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey && e.key === "u") {
+        e.preventDefault();
+        alert("此網頁禁止使用Ctrl+U 組合鍵");
+        }
+    });
+  </script>
+</script>
+</body>
+</html>
