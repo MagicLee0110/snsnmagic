@@ -114,6 +114,33 @@
     .link-box a:hover {
       background-color: #333;
     }
+    .profile-info2 {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      background-color: #2f2f2f;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      transition: transform 0.5s, box-shadow 0.5s;
+      transform: translateY(20px);
+      margin-bottom: 20px; /* 新增間距 */
+    }
+    /* 預約按鈕樣式 */
+    .profile-info2 button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      margin-top: 10px;
+    }
+    .profile-info2 button:hover {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -186,8 +213,17 @@
 
     <!-- 第三頁 -->
     <div class="page">
-      <h2>關於更多的我....</h2>
-      <!-- 這裡放關於您的其他文章內容 -->
+      <h2>魔幻森林遊樂園</h2>
+      <p>歡迎來到魔幻森林遊樂園，這裡森森將會開發許多線上魔術讓大家體驗，讓我們一同享受魔術帶來樂趣吧!</p>
+      <div class="profile-info2">
+        <h2>魔術名稱:數字讀心術</h2>
+        <p>簡介: 觀眾從1-63內想一個數字，我將讀出你/妳心裡想的數字。</p>
+        <p>魔術類型: 心靈魔術。</p>
+        <p>適合對象: 所有年齡層。</p>
+        <p>遊玩時間: 1~2分鐘。</p>
+        <!-- 點擊進入 -->
+<button onclick="openBookingForm('讀心世界.html')">點擊進入</button>
+      </div>
     </div>
     
     <!-- 翻頁按鈕 -->
@@ -243,6 +279,10 @@ function showPage(pageNumber) {
     });
 
     showPage(currentPage);
+
+  function openBookingForm(pageUrl) {
+    window.location.href = pageUrl; // 跳转到指定的页面
+  }
   </script>
 
 <footer style="text-align: center; margin-top: 20px;">
