@@ -67,7 +67,7 @@
     .profile-info p {
       line-height: 1.6;
     }
-    /* 預約按鈕樣式 */
+    /* 以下為預約返回按鈕樣式 */
     .profile-info button {
       background-color: rgba(0, 0, 0, 0.5);
       color: #fff;
@@ -81,6 +81,28 @@
     }
     .profile-info button:hover {
       opacity: 1;
+    }
+    .link-to-page {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: 2px solid #fff;
+      cursor: pointer;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      width: 35px;
+      height: 18px; /* 設置按鈕高度 */
+      font-size: 14px; /* 設置按鈕文字大小為16像素 */
+    }
+    .link-to-page:hover {
+      opacity: 1;
+    }
+    .link-to-page {
+      text-decoration: none; /* 移除超連結底線 */
     }
   </style>
 </head>
@@ -115,7 +137,7 @@
       function openBookingForm(bookingLink) {
         window.open(bookingLink, '_blank', 'width=600,height=400');
       }
-      // 阻止 F12 開發者工具
+// 阻止 F12 開發者工具
 document.addEventListener("keydown", function (e) {
     if (e.keyCode == 123) {
         e.preventDefault();
@@ -138,7 +160,7 @@ document.addEventListener("keydown", function (e) {
     });
     </script>
   </main>
-
+    <a class="link-to-page" href="mentalist.html#secondPage">返回</a>
   <!-- 頁腳 -->
   <footer style="text-align: center; margin-top: 20px;">
     <p>©魔術師森森的魔幻空間</p>
