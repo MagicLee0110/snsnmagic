@@ -319,13 +319,15 @@ document.addEventListener("keydown", function (e) {
 // 獲取 URL 中的錨點部分(這裡是其他網頁導到第二頁第三頁的方法)
 const urlHash = window.location.hash;
 
-// 如果 URL 中有錨點，並且錨點與第二頁的 ID 匹配，則顯示第二頁
+// 如果 URL 中有錨點，並且錨點與第二頁的 ID 匹配，則顯示第二頁，第三頁也是
 if (urlHash === '#secondPage') {
   currentPage = 1; // 第二頁在頁面列表中索引為1
   showPage(currentPage);
+  history.replaceState(null, null, window.location.pathname);// 移除錨點
 } else if (urlHash === '#thirdPage') {
   currentPage = 2; // 第三頁在頁面列表中索引為2
   showPage(currentPage);
+  history.replaceState(null, null, window.location.pathname);// 移除錨點
 }
   </script>
 <footer style="text-align: center; margin-top: 20px;">
