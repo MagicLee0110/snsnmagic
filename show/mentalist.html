@@ -189,7 +189,7 @@
     </div>
 
     <!-- 第二頁 - 分類連結 -->
-    <div class="page">
+    <div class="page" id="secondPage">
       <h2>選擇您想了解的內容</h2>
       <br>
       <div class="flex-container">
@@ -212,7 +212,7 @@
     </div>
 
     <!-- 第三頁 -->
-    <div class="page">
+    <div class="page" id="thirdPage">
       <h2>魔幻森林遊樂園</h2>
       <p>歡迎來到魔幻森林遊樂園，這裡森森將會開發許多線上魔術讓大家體驗，讓我們一同享受魔術帶來樂趣吧!</p>
       <div class="profile-info2">
@@ -315,8 +315,19 @@ document.addEventListener("keydown", function (e) {
         alert("此網頁禁止使用Ctrl+U 組合鍵");
         }
     });
-  </script>
 
+// 獲取 URL 中的錨點部分(這裡是其他網頁導到第二頁第三頁的方法)
+const urlHash = window.location.hash;
+
+// 如果 URL 中有錨點，並且錨點與第二頁的 ID 匹配，則顯示第二頁
+if (urlHash === '#secondPage') {
+  currentPage = 1; // 第二頁在頁面列表中索引為1
+  showPage(currentPage);
+} else if (urlHash === '#thirdPage') {
+  currentPage = 2; // 第三頁在頁面列表中索引為2
+  showPage(currentPage);
+}
+  </script>
 <footer style="text-align: center; margin-top: 20px;">
   <p>©魔術師森森的魔幻空間</p>
   <br>
