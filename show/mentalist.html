@@ -141,18 +141,14 @@
     .profile-info2 button:hover {
       opacity: 1;
     }
+    h2 {
+     color: gold !important; /* 將所有 h2 的文字顏色設置為黃色 */
+    }
 
     .profile-info h2,
     .profile-info2 h2 {
      color: #f8d200; /* 設置文本顏色為黃色 */
-     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* 添加發亮效果的文字陰影 */
      }
-
-    /* 如果需要在 hover 時增加亮度，你還可以添加以下代碼 */
-    .profile-info h2:hover,
-    .profile-info2 h2:hover {
-      filter: brightness(1.2); /* 透過 filter 的 brightness 屬性增加亮度 */
-    }
 
   </style>
 </head>
@@ -203,7 +199,7 @@
 
     <!-- 第二頁 - 分類連結 -->
     <div class="page" id="secondPage">
-      <h2>選擇您想了解的內容</h2>
+      <h2>服務項目</h2>
       <br>
       <div class="flex-container">
         <div class="link-box">
@@ -229,21 +225,21 @@
       <h2>魔幻森林遊樂園</h2>
       <p>歡迎來到魔幻森林遊樂園，這裡森森將會開發許多線上魔術讓大家體驗，讓我們一同享受魔術帶來樂趣吧!</p>
       <div class="profile-info2">
-        <h2>魔術名稱:數字讀心術</h2>
-        <p>簡介: 觀眾從1-63內想一個數字，我將讀出你/妳心裡想的數字。</p>
-        <p>魔術類型: 心靈魔術。</p>
-        <p>適合對象: 所有年齡層。</p>
-        <p>遊玩時間: 1~2分鐘。</p>
+        <h2><strong>魔術名稱:</strong> 數字讀心術</h2>
+        <p><strong>簡介:</strong> 觀眾從1-63內想一個數字，我將讀出你/妳心裡想的數字。</p>
+        <p><strong>魔術類型:</strong> 心靈魔術。</p>
+        <p><strong>適合對象:</strong> 所有年齡層。</p>
+        <p><strong>遊玩時間:</strong> 1~2分鐘。</p>
         <!-- 點擊進入 -->
 <button onclick="openBookingForm('讀心世界.html')">點擊進入</button>
       </div>
 
       <div class="profile-info2">
-        <h2>魔術名稱:心電感應</h2>
-        <p>簡介: 我將透過超能力，與你/妳來場美妙的心電感應!</p>
-        <p>魔術類型: 心靈魔術。</p>
-        <p>適合對象: 10歲以上。</p>
-        <p>遊玩時間: 2~3分鐘。</p>
+        <h2><strong>魔術名稱:</strong>心電感應</h2>
+        <p><strong>簡介:</strong> 我將透過超能力，與你/妳來場美妙的心電感應!</p>
+        <p><strong>魔術類型:</strong> 心靈魔術。</p>
+        <p><strong>適合對象:</strong> 10歲以上。</p>
+        <p><strong>遊玩時間:</strong> 2~3分鐘。</p>
         <!-- 點擊進入 -->
 <button onclick="openBookingForm('心電感應.html')">點擊進入</button>
       </div>
