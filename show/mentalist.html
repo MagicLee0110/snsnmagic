@@ -141,6 +141,29 @@
     .profile-info2 button:hover {
       opacity: 1;
     }
+    header h1 {
+      color: #f8d200; /* 设置文本颜色为黄色 */
+      text-shadow: 0 0 10px #f8d200, 0 0 20px #f8d200, 0 0 30px #f8d200; /* 添加发光效果 */
+    }
+
+    /* 如果需要在hover时增加亮度，你还可以添加以下代码 */
+       header h1:hover {
+       filter: brightness(1.2); /* 透过filter的brightness属性增加亮度 */
+    }
+
+.profile-info h2,
+.profile-info2 h2 {
+  color: #87CEEB; /* 設置文本顏色為淡藍色 */
+  text-shadow: 0 0 10px #87CEEB, 0 0 20px #87CEEB, 0 0 30px #87CEEB; /* 添加發光效果 */
+}
+
+/* 如果需要在 hover 時增加亮度，你還可以添加以下代碼 */
+.profile-info h2:hover,
+.profile-info2 h2:hover {
+  filter: brightness(1.2); /* 透過 filter 的 brightness 屬性增加亮度 */
+}
+
+
   </style>
 </head>
 <body>
@@ -153,16 +176,16 @@
       <div class="profile-info">
         <h2>魔術師森森</h2>
     <p>
-      個人風格:<br>
+      <strong>個人風格:</strong><br>
       神秘、低調。<br>
       <br>
-      資歷:<br>
+      <strong>資歷:</strong><br>
       專研魔術至今已超過10年。<br>
       <br>
-      魔術專長:<br>
+       <strong>魔術專長:</strong><br>
       心靈魔術、紙牌魔術、近距離魔術。<br>
       <br>
-      經歷:<br>
+      <strong>經歷:</strong><br>
       朝陽魔術社第十屆社長<br>
       朝陽魔術社心靈魔術講座講師<br>
       中興大學魔術社心靈魔術講座講師<br>
@@ -294,27 +317,27 @@ function showPage(pageNumber) {
   function openBookingForm(pageUrl) {
     window.location.href = pageUrl; // 跳转到指定的页面
   }
-// 阻止 F12 開發者工具
-document.addEventListener("keydown", function (e) {
-    if (e.keyCode == 123) {
-        e.preventDefault();
-        alert("此網頁禁止使用F12");
-        }
-    });
+	// 阻止 F12 開發者工具
+	document.addEventListener("keydown", function (e) {
+  	  if (e.keyCode == 123) {
+       	  e.preventDefault();
+          alert("此網頁禁止使用F12");
+        	}
+   	 });
 
-// 禁用右鍵點擊
-document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-        alert("此網頁禁止使用右鍵");
-    });
+	// 禁用右鍵點擊
+	document.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          alert("此網頁禁止使用右鍵");
+    		});
 
-// 禁用 Ctrl+U 組合鍵
-document.addEventListener("keydown", function (e) {
-    if (e.ctrlKey && e.key === "u") {
-        e.preventDefault();
-        alert("此網頁禁止使用Ctrl+U 組合鍵");
-        }
-    });
+	// 禁用 Ctrl+U 組合鍵
+	document.addEventListener("keydown", function (e) {
+    	if (e.ctrlKey && e.key === "u") {
+          e.preventDefault();
+          alert("此網頁禁止使用Ctrl+U 組合鍵");
+        	}
+    	});
 
 // 獲取 URL 中的錨點部分(這裡是其他網頁導到第二頁第三頁的方法)
 const urlHash = window.location.hash;
