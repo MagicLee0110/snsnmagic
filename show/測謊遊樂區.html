@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #282c35; /* 深色背景 */
+            color: #fff; /* 白色文本 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .content {
+            background-color: #333; /* 深色容器背景 */
+            border: 1px solid #555; /* 深色邊框 */
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        #answer {
+            font-size: 18px;
+            margin-top: 15px;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 36px;
+            color: #4caf50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="text1" class="content">
+    <h1>測謊遊樂區</h1>
+    <p>歡迎來到測謊遊樂區，請先選擇以下角色:</p>
+    <p>(只能選擇一個角色)</p>
+    <p>1.實話者:在遊樂區的所有問題回答，都必須回答實話</p>
+    <p>2.謊話者:在遊樂區的所有問題回答，都必須回答謊話</p>
+    <p>選擇完成後按下繼續，並依造樂園指示操作!</p>
+    <button onclick="showText2()">繼續</button>
+</div>
+
+<div id="text2" class="hidden content">
+    <p>請先拿出一枚任意硬幣，將硬幣隨意放一隻手中握住。</p>
+    <p>好了之後請按下繼續，回答問題</p>
+    <button onclick="showQuestion1()">繼續</button>
+</div>
+
+<div id="question1" class="hidden content">
+    <p>問題1:硬幣是不是在你的左手?</p>
+    <p>(實話者:必須回答實話</p>
+    <p> 謊話者:必須回答謊話)</p>
+    <button onclick="checkAnswer('是')">是</button>
+    <button onclick="checkAnswer('不是')">不是</button>
+</div>
+
+<div id="text3" class="hidden content">
+    <p>請將硬幣在你左右手隨意打亂，最後放置任意手中握住。</p>
+    <button onclick="showQuestion2()">繼續</button>
+</div>
+
+<div id="question2" class="hidden content">
+    <p>問題2:這次你放硬幣的手跟剛剛(第一次)放的是不是同一隻手?</p>
+    <p>(實話者:必須回答實話</p>
+    <p> 謊話者:必須回答謊話)</p>
+    <button onclick="checkAnswer2('是')">是</button>
+    <button onclick="checkAnswer2('不是')">不是</button>
+</div>
+
+<div id="question3" class="hidden content">
+    <p>問題3:硬幣現在在你的左手嗎?</p>
+    <p>(實話者:必須回答實話</p>
+    <p> 謊話者:必須回答謊話)</p>
+    <button onclick="checkAnswer3('是')">是</button>
+    <button onclick="checkAnswer3('不是')">不是</button>
+</div>
+
+<div id="result" class="hidden content">
+    <p id="answer"></p>
+</div>
+
+<script>
+    let answer1, answer2, answer3;
+
+    function showText2() {
+        document.getElementById('text1').classList.add('hidden');
+        document.getElementById('text2').classList.remove('hidden');
+    }
+
+    function showQuestion1() {
+        document.getElementById('text2').classList.add('hidden');
+        document.getElementById('question1').classList.remove('hidden');
+    }
+
+    function showText3() {
+        document.getElementById('question1').classList.add('hidden');
+        document.getElementById('text3').classList.remove('hidden');
+    }
+
+    function showQuestion2() {
+        document.getElementById('text3').classList.add('hidden');
+        document.getElementById('question2').classList.remove('hidden');
+    }
+
+    function showQuestion3() {
+        document.getElementById('question2').classList.add('hidden');
+        document.getElementById('question3').classList.remove('hidden');
+    }
+
+    function checkAnswer(answer) {
+        answer1 = answer;
+        showText3();
+    }
+
+    function checkAnswer2(answer) {
+        answer2 = answer;
+        showQuestion3();
+    }
+
+    function checkAnswer3(answer) {
+        answer3 = answer;
+        displayResult();
+    }
+
+    function displayResult() {
+        let result = document.getElementById('answer');
+        let finalAnswer;
+
+        if (answer1 === '是' && answer2 === '是' && answer3 === '是') {
+            finalAnswer = '你說的是實話，硬幣在你的左手';
+        } else if (answer1 === '是' && answer2 === '是' && answer3 === '不是') {
+            finalAnswer = '你說的是謊話，硬幣在你的左手';
+        } else if (answer1 === '是' && answer2 === '不是' && answer3 === '是') {
+            finalAnswer = '你說的是謊話，硬幣在你的右手';
+        } else if (answer1 === '是' && answer2 === '不是' && answer3 === '不是') {
+            finalAnswer = '你說的是實話，硬幣在你的右手';
+        } else if (answer1 === '不是' && answer2 === '不是' && answer3 === '是') {
+            finalAnswer = '你說的是實話，硬幣在你的左手';
+        } else if (answer1 === '不是' && answer2 === '不是' && answer3 === '不是') {
+            finalAnswer = '你說的是謊話，硬幣在你的左手';
+        }
+
+        result.innerHTML = '測謊結果: ' + finalAnswer;
+        document.getElementById('question3').classList.add('hidden');
+        document.getElementById('result').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
