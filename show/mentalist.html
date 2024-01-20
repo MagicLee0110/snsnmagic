@@ -141,28 +141,18 @@
     .profile-info2 button:hover {
       opacity: 1;
     }
-    header h1 {
-      color: #f8d200; /* 设置文本颜色为黄色 */
-      text-shadow: 0 0 10px #f8d200, 0 0 20px #f8d200, 0 0 30px #f8d200; /* 添加发光效果 */
+
+    .profile-info h2,
+    .profile-info2 h2 {
+     color: #f8d200; /* 設置文本顏色為黃色 */
+     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* 添加發亮效果的文字陰影 */
+     }
+
+    /* 如果需要在 hover 時增加亮度，你還可以添加以下代碼 */
+    .profile-info h2:hover,
+    .profile-info2 h2:hover {
+      filter: brightness(1.2); /* 透過 filter 的 brightness 屬性增加亮度 */
     }
-
-    /* 如果需要在hover时增加亮度，你还可以添加以下代码 */
-       header h1:hover {
-       filter: brightness(1.2); /* 透过filter的brightness属性增加亮度 */
-    }
-
-.profile-info h2,
-.profile-info2 h2 {
-  color: #87CEEB; /* 設置文本顏色為淡藍色 */
-  text-shadow: 0 0 10px #87CEEB, 0 0 20px #87CEEB, 0 0 30px #87CEEB; /* 添加發光效果 */
-}
-
-/* 如果需要在 hover 時增加亮度，你還可以添加以下代碼 */
-.profile-info h2:hover,
-.profile-info2 h2:hover {
-  filter: brightness(1.2); /* 透過 filter 的 brightness 屬性增加亮度 */
-}
-
 
   </style>
 </head>
