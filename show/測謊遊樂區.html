@@ -70,45 +70,53 @@
 
 <div id="text1" class="content">
     <h1>測謊遊樂區</h1>
-    <p>歡迎來到測謊遊樂區，請先選擇以下角色:</p>
-    <p>(只能選擇一個角色)</p>
+    <p>歡迎來到測謊遊樂區</p>
+    <p>請先選擇以下角色(二擇一):</p>
     <p>1.實話者:在遊樂區的所有問題回答，都必須回答實話</p>
     <p>2.謊話者:在遊樂區的所有問題回答，都必須回答謊話</p>
-    <p>選擇完成後按下繼續，並依造樂園指示操作!</p>
+    <p>選擇完成後按下繼續!</p>
     <button onclick="showText2()">繼續</button>
 </div>
 
 <div id="text2" class="hidden content">
-    <p>請先拿出一枚任意硬幣，將硬幣隨意放一隻手中握住。</p>
-    <p>好了之後請按下繼續，回答問題</p>
+    <p>請先拿出一枚任意硬幣，</p>
+    <p>將硬幣隨意放一隻手中握住。</p>
+    <p>好了之後請按下繼續 !</p>
     <button onclick="showQuestion1()">繼續</button>
 </div>
 
 <div id="question1" class="hidden content">
-    <p>問題1:硬幣是不是在你的左手?</p>
-    <p>(實話者:必須回答實話</p>
-    <p> 謊話者:必須回答謊話)</p>
+    <p>請依造你選的角色回答以下問題:</p>
+    <p>(實話者:必須回答實話)</p>
+    <p>(謊話者:必須回答謊話)</p>
+    </br>
+    <p>現在硬幣是不是在你的左手?</p>
     <button onclick="checkAnswer('是')">是</button>
     <button onclick="checkAnswer('不是')">不是</button>
 </div>
 
 <div id="text3" class="hidden content">
-    <p>請將硬幣在你左右手隨意打亂，最後放置任意手中握住。</p>
+    <p>請將硬幣在你左右手隨意打亂，</p>
+    <p>最後放置任意手中握住。</p>
     <button onclick="showQuestion2()">繼續</button>
 </div>
 
 <div id="question2" class="hidden content">
-    <p>問題2:這次你放硬幣的手跟剛剛(第一次)放的是不是同一隻手?</p>
-    <p>(實話者:必須回答實話</p>
-    <p> 謊話者:必須回答謊話)</p>
+    <p>請依造你的選角色回答以下問題:</p>
+    <p>(實話者:必須回答實話)</p>
+    <p>(謊話者:必須回答謊話)</p>
+    </br>
+    <p>這次你放硬幣的手跟剛剛放的是不是同一隻手?</p>
     <button onclick="checkAnswer2('是')">是</button>
     <button onclick="checkAnswer2('不是')">不是</button>
 </div>
 
 <div id="question3" class="hidden content">
-    <p>問題3:硬幣現在在你的左手嗎?</p>
-    <p>(實話者:必須回答實話</p>
-    <p> 謊話者:必須回答謊話)</p>
+    <p>請依造你選的角色回答以下問題:</p>
+    <p>(實話者:必須回答實話)</p>
+    <p>(謊話者:必須回答謊話)</p>
+    </br>
+    <p>硬幣現在在你的左手嗎?</p>
     <button onclick="checkAnswer3('是')">是</button>
     <button onclick="checkAnswer3('不是')">不是</button>
 </div>
@@ -165,18 +173,23 @@
         let finalAnswer;
 
         if (answer1 === '是' && answer2 === '是' && answer3 === '是') {
-            finalAnswer = '你說的是實話，硬幣在你的左手';
+            finalAnswer = '你說的是實話，硬幣在你的左手。';
         } else if (answer1 === '是' && answer2 === '是' && answer3 === '不是') {
-            finalAnswer = '你說的是謊話，硬幣在你的左手';
+            finalAnswer = '你說的是謊話，硬幣在你的左手。';
         } else if (answer1 === '是' && answer2 === '不是' && answer3 === '是') {
-            finalAnswer = '你說的是謊話，硬幣在你的右手';
+            finalAnswer = '你說的是謊話，硬幣在你的右手。';
         } else if (answer1 === '是' && answer2 === '不是' && answer3 === '不是') {
-            finalAnswer = '你說的是實話，硬幣在你的右手';
+            finalAnswer = '你說的是實話，硬幣在你的右手。';
         } else if (answer1 === '不是' && answer2 === '不是' && answer3 === '是') {
-            finalAnswer = '你說的是實話，硬幣在你的左手';
+            finalAnswer = '你說的是實話，硬幣在你的左手。';
         } else if (answer1 === '不是' && answer2 === '不是' && answer3 === '不是') {
-            finalAnswer = '你說的是謊話，硬幣在你的左手';
+            finalAnswer = '你說的是謊話，硬幣在你的左手。';
+        } else if (answer1 === '不是' && answer2 === '是' && answer3 === '不是') {
+            finalAnswer = '你說的是實話，硬幣在你的右手。';
+        } else if (answer1 === '不是' && answer2 === '是' && answer3 === '是') {
+            finalAnswer = '你說的是謊話，硬幣在你的右手。';
         }
+
 
         result.innerHTML = '測謊結果: ' + finalAnswer;
         document.getElementById('question3').classList.add('hidden');
