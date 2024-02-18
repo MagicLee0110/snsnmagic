@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>胡迪尼</title>
+  <style>
+    body {
+      font-family: "Arial Black", Gadget, sans-serif;
+      text-align: center;
+      background-color: black;
+      color: white;
+      padding-top: 50px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+    #passwordInput {
+      margin-top: 50px;
+      padding: 10px;
+      border: 2px solid white;
+      background-color: transparent;
+      color: white;
+      font-size: 16px;
+    }
+    #submitButton {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    #submitButton:hover {
+      background-color: #45a049;
+    }
+    #errorMessage {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>請輸入密碼以進入</h2>
+  <form id="loginForm" onsubmit="return checkPassword()">
+    <input type="password" id="passwordInput" placeholder="請輸入密碼" required>
+    <br>
+    <input type="submit" id="submitButton" value="進入">
+  </form>
+  <div id="errorMessage"></div>
+
+  <script>
+    function checkPassword() {
+      var password = document.getElementById("passwordInput").value;
+      if (password === "37") {
+        window.location.href = "https://11z.co/12505/7"; // 密碼正確，重定向到目標網站
+        return false; // 阻止表單提交
+      } else {
+        document.getElementById("errorMessage").innerText = "密碼錯誤，請重新輸入。";
+        return false; // 阻止表單提交
+      }
+    }
+
+	// 阻止 F12 開發者工具
+	document.addEventListener("keydown", function (e) {
+  	  if (e.keyCode == 123) {
+       	  e.preventDefault();
+          alert("此網頁禁止使用F12");
+        	}
+   	 });
+
+	// 禁用右鍵點擊
+	document.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          alert("此網頁禁止使用右鍵");
+    		});
+
+	// 禁用 Ctrl+U 組合鍵
+	document.addEventListener("keydown", function (e) {
+    	if (e.ctrlKey && e.key === "u") {
+          e.preventDefault();
+          alert("此網頁禁止使用Ctrl+U 組合鍵");
+        	}
+    	});
+
+	// 禁用 Ctrl+U 組合鍵
+	document.addEventListener("keydown", function (e) {
+    	if (e.ctrlKey && e.key === "U") {
+          e.preventDefault();
+          alert("此網頁禁止使用Ctrl+U 組合鍵");
+        	}
+    	});
+
+  </script>
+</body>
+</html>
