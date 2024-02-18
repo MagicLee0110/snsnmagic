@@ -245,13 +245,23 @@
       </div>
 
       <div class="profile-info2">
-        <h2>森森魔術專區</h2>
-        <p>簡介: 這裡為森森個人魔術專區，只提供森森日常表演專用呦!</p>
-        <p>魔術類型: 不限。</p>
-        <p>適合對象: 不限。</p>
-        <p>遊玩時間: 不限。</p>
+        <h2><strong>魔術名稱:</strong>胡迪尼催眠術</h2>
+        <p><strong>簡介:</strong> 此魔術為森森本人現場表演專用，逃脫大師胡迪尼將用他的高超技巧，催眠你的大腦!</p>
+        <p><strong>魔術類型:</strong> 心靈魔術。</p>
+        <p><strong>適合對象:</strong> 10歲以上。</p>
+        <p><strong>遊玩時間:</strong> 2~3分鐘。</p>
         <!-- 點擊進入 -->
-<button onclick="openBookingForm('森森專區.html')">點擊進入</button>
+<button onclick="openBookingForm('胡迪尼.html')">點擊進入</button>
+      </div>
+
+      <div class="profile-info2">
+        <h2><strong>魔術名稱:</strong>測試中</h2>
+        <p><strong>簡介:</strong> 此項為森森測試專用!</p>
+        <p><strong>魔術類型:</strong> 測試中。</p>
+        <p><strong>適合對象:</strong> 測試中。</p>
+        <p><strong>遊玩時間:</strong> 測試中。</p>
+        <!-- 點擊進入 -->
+<button onclick="openBookingForm('https://11z.co/12505')">點擊進入</button>
       </div>
 
 
@@ -328,13 +338,22 @@ function showPage(pageNumber) {
           alert("此網頁禁止使用右鍵");
     		});
 
-	// 禁用 Ctrl+U 組合鍵
+	// 禁用 Ctrl+u 組合鍵
 	document.addEventListener("keydown", function (e) {
     	if (e.ctrlKey && e.key === "u") {
           e.preventDefault();
           alert("此網頁禁止使用Ctrl+U 組合鍵");
         	}
     	});
+
+	// 禁用 Ctrl+U 組合鍵
+	document.addEventListener("keydown", function (e) {
+    	if (e.ctrlKey && e.key === "U") {
+          e.preventDefault();
+          alert("此網頁禁止使用Ctrl+U 組合鍵");
+        	}
+    	});
+
 
 // 獲取 URL 中的錨點部分(這裡是其他網頁導到第二頁第三頁的方法)
 const urlHash = window.location.hash;
