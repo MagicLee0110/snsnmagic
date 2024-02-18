@@ -161,6 +161,14 @@ document.addEventListener("keydown", function (e) {
         alert("此網頁禁止使用Ctrl+U 組合鍵");
         }
     });
+
+	// 禁用 Ctrl+U 組合鍵
+	document.addEventListener("keydown", function (e) {
+    	if (e.ctrlKey && e.key === "U") {
+          e.preventDefault();
+          alert("此網頁禁止使用Ctrl+U 組合鍵");
+        	}
+    	});
     </script>
   </main>
     <a class="link-to-page" href="mentalist.html#secondPage">返回</a>
