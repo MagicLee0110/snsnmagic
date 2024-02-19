@@ -1,364 +1,222 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" contect="width=device-width,initial-scale=1.0" />
-    <title>數字讀心遊樂區</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Page</title>
     <style>
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-
-        h1 {
-            color: #005c97;
-            font-size: 30px;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #282c35; /* 深色背景 */
+            color: #fff; /* 白色文本 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
-        p {
-            color: #444;
-            font-size: 28px;
-        }
-
-        form {
-            border: 1px solid #ccc;
-            background-color: #fff;
+        .content {
+            background-color: #333; /* 深色容器背景 */
+            border: 1px solid #555; /* 深色邊框 */
+            border-radius: 8px;
             padding: 20px;
-            border-radius: 10px;
-            width: 400px;
-            margin: 0 auto;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
         }
 
-input[type="radio"]+label {
-    font-size: 24px; /* 調整此數值以符合你的喜好 */
-    margin-left: 5px;
-}
-
-        input[type="button"] {
-            background-color: #005c97;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        input[type="button"]:hover {
-            background-color: #004a7f;
-        }
-
-        .result {
-            margin-top: 20px;
-            font-size: 50px;
-            font-weight: bold;
-            color: #008000;
-        }
-
-        .question-container {
+        .hidden {
             display: none;
         }
 
-        .current-question {
-            display: block;
-        }
-        .calculate-button{
-            margin-top: 20px;
-            background-color: #005c97;
+        button {
+            background-color: #4caf50;
             color: #fff;
-            border: none;
             padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
-            border-radius: 5px;
-	    width: 200px;
-	    hright: 200px;
-	    font-size: 16px;
+            font-size: 16px;
+            margin-top: 10px;
         }
 
-        .start-button, .next-button {
-            margin-top: 20px;
-            background-color: #005c97;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-	    width: 200px;
-	    hright: 200px;
-	    font-size: 16px;
+        button:hover {
+            background-color: #45a049;
         }
 
-        .start-button:hover, .next-button:hover {
-            background-color: #004a7f;
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        #answer {
+            font-size: 18px;
+            margin-top: 15px;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 36px;
+            color: #4caf50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>數字讀心遊樂區</h1>
-	<br>
-	<br>
-	<h3>歡迎來到數字讀心遊樂區</h3>
-	<h3>我將用我的超能力，來讀出你/妳所想的數字!</h3>
-        <h3>現在，請幫我想一個1-63之間的數字。</h3>
-        <h3>想好後按下"開始讀心"，來進入讀心術的世界!</h3>
-	<br>
-	<br>
-	<br>
-        <input type="button" class="start-button" value="開始讀心" onclick="startGame()">
-    </div>
 
-    <div id="game-section" style="display: none;">
-        <h1>讀心術</h1>
+<div id="text1" class="content">
+    <h1>測謊遊樂區</h1>
+    <p>歡迎來到測謊遊樂區</p>
+    <p>請先選擇以下角色(二擇一):</p>
+    <p>1.實話者:在遊樂區的所有問題回答，都必須回答實話</p>
+    <p>2.謊話者:在遊樂區的所有問題回答，都必須回答謊話</p>
+    <p>選擇完成後按下繼續!</p>
+    <button onclick="showText2()">繼續</button>
+</div>
 
-        <div class="question-container" id="question1">
-            <p>問題1：你想的數字裡面有
-<br>1、3、5、7、9、11、13
-<br>15、17、19、21、23、25
-<br>27、29、31、33、35、37
-<br>39、41、43、45、47、49
-<br>51、53、55、57
-<br>59、61、63。
-<br>其中一個嗎？</p>
-<input type="radio" name="q1" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q1" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
+<div id="text2" class="hidden content">
+    <p>請先拿出一枚任意硬幣，</p>
+    <p>將硬幣隨意放一隻手中握住。</p>
+    <p>好了之後請按下繼續 !</p>
+    <button onclick="showQuestion1()">繼續</button>
+</div>
 
-            <br>
-        </div>
+<div id="question1" class="hidden content">
+    <p>請依造你選的角色回答以下問題:</p>
+    <p>(實話者:必須回答實話)</p>
+    <p>(謊話者:必須回答謊話)</p>
+    </br>
+    <p>現在硬幣是不是在你的左手?</p>
+    <button onclick="checkAnswer('是')">是</button>
+    <button onclick="checkAnswer('不是')">不是</button>
+</div>
 
-        <div class="question-container" id="question2">
-            <p>問題2：你想的數字裡面有
-<br>2、3、6、7、10、11
-<br>14、15、18、19、22、23
-<br>26、27、30、31、34、35
-<br>38、39、42、43、46、47
-<br>50、51、54、55
-<br>58、59、62、63。
-<br>其中一個嗎？</p>
-<input type="radio" name="q2" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q2" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
+<div id="text3" class="hidden content">
+    <p>請將硬幣在你左右手隨意打亂，</p>
+    <p>最後放置任意手中握住。</p>
+    <button onclick="showQuestion2()">繼續</button>
+</div>
 
-            <br>
-        </div>
-        <div class="question-container" id="question3">
-            <p>問題3：你想的數字裡面有
-<br>4、5、6、7、12、13
-<br>14、15、20、21、22、23
-<br>28、29、30、31、36、37
-<br>38、39、44、45、46、47
-<br>52、53、54、55、60
-<br>61、62、63。
-<br>其中一個嗎？</p>
-<input type="radio" name="q3" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q3" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
+<div id="question2" class="hidden content">
+    <p>請依造你的選角色回答以下問題:</p>
+    <p>(實話者:必須回答實話)</p>
+    <p>(謊話者:必須回答謊話)</p>
+    </br>
+    <p>這次你放硬幣的手跟剛剛放的是不是同一隻手?</p>
+    <button onclick="checkAnswer2('是')">是</button>
+    <button onclick="checkAnswer2('不是')">不是</button>
+</div>
 
-            <br>
-        </div>
-        <div class="question-container" id="question4">
-            <p>問題4：你想的數字裡面有
-<br>8、9、10、11、12、13
-<br>14、15、24、25、26、27
-<br>28、29、30、31、40、41
-<br>42、43、44、45、46、47
-<br>56、57、58、59
-<br>60、61、62、63
-<br>其中一個嗎？</p>
-<input type="radio" name="q4" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q4" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
+<div id="question3" class="hidden content">
+    <p>請依造你選的角色回答以下問題:</p>
+    <p>(實話者:必須回答實話)</p>
+    <p>(謊話者:必須回答謊話)</p>
+    </br>
+    <p>硬幣現在在你的左手嗎?</p>
+    <button onclick="checkAnswer3('是')">是</button>
+    <button onclick="checkAnswer3('不是')">不是</button>
+</div>
 
-            <br>
-        </div>
-        <div class="question-container" id="question5">
-            <p>問題5：你想的數字裡面有
-<br>16、17、18、19、20、21
-<br>22、23、24、25、26、27
-<br>28、29、30、31、48、49
-<br>50、51、52、53、54、55
-<br>56、57、58、59、60
-<br>61、62、63
-<br>其中一個嗎？</p>
-<input type="radio" name="q5" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q5" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
+<div id="result" class="hidden content">
+    <p id="answer"></p>
+</div>
 
-            <br>
-        </div>
-        <div class="question-container" id="question6">
-            <p>問題6：你想的數字裡面有
-<br>32、33、34、35、36、37
-<br>38、39、40、41、42、43
-<br>44、45、46、47、48、49
-<br>50、51、52、53、54、55
-<br>56、57、58、59、60、61
-<br>62、63
-<br>其中一個嗎？</p>
-<input type="radio" name="q6" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q6" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
+<script>
+    let answer1, answer2, answer3;
 
-            <br>
-        </div>
-
-        <input type="button" class="next-button" value="繼續" onclick="showNextQuestion()">
-        <input type="button" class="calculate-button" value="查看讀心結果" onclick="calculateAnswer()" style="display: none;">
-        <input type="button" class="start-button" value="提交" onclick="checkAnswer()" style="display: none;">
-    </div>
-
-    <div class="result-container" style="display: none;">
-        <div class="result" id="result"></div>
-    </div>
-
-    <script>
-        let currentQuestion = 1;
-
-        function startGame() {
-            document.getElementById("game-section").style.display = "block";
-            document.querySelector("div").style.display = "none";
-            showCurrentQuestion();
-        }
-
-        function showCurrentQuestion() {
-            const currentQuestionDiv = document.querySelector(".current-question");
-            if (currentQuestionDiv) {
-                currentQuestionDiv.classList.remove("current-question");
-            }
-            const questionDiv = document.getElementById("question" + currentQuestion);
-            questionDiv.classList.add("current-question");
-
-            if (currentQuestion === 6) {
-                document.querySelector(".next-button").style.display = "none";
-                document.querySelector(".calculate-button").style.display = "inline-block";
-                document.querySelector(".start-button").style.display = "none";
-            } else {
-                document.querySelector(".next-button").style.display = "inline-block";
-                document.querySelector(".calculate-button").style.display = "none";
-                document.querySelector(".start-button").style.display = "none";
-            }
-        }
-
-function showNextQuestion() {
-    const currentQuestionAnswers = document.querySelectorAll('#question' + currentQuestion + ' input[type="radio"]');
-    let answered = false;
-
-    currentQuestionAnswers.forEach(answer => {
-        if (answer.checked) {
-            answered = true;
-        }
-    });
-
-    if (!answered) {
-        return;
+    function showText2() {
+        document.getElementById('text1').classList.add('hidden');
+        document.getElementById('text2').classList.remove('hidden');
     }
 
-    currentQuestion++;
-    showCurrentQuestion();
-}
+    function showQuestion1() {
+        document.getElementById('text2').classList.add('hidden');
+        document.getElementById('question1').classList.remove('hidden');
+    }
 
-        function calculateAnswer() {
-            var q1Answer = document.querySelector('input[name="q1"]:checked');
-            var q2Answer = document.querySelector('input[name="q2"]:checked');
-            var q3Answer = document.querySelector('input[name="q3"]:checked');
-            var q4Answer = document.querySelector('input[name="q4"]:checked');
-            var q5Answer = document.querySelector('input[name="q5"]:checked');
-            var q6Answer = document.querySelector('input[name="q6"]:checked');
-            var result = "";
-	    var a=0;
-	    var b=0;
-	    var c=0;
-	    var x=0;
-	    var y=0;
-	    var z=0;
-	    var e=0;
+    function showText3() {
+        document.getElementById('question1').classList.add('hidden');
+        document.getElementById('text3').classList.remove('hidden');
+    }
 
-            if (q1Answer && q2Answer && q3Answer && q4Answer && q5Answer && q6Answer) {
-                q1Answer = q1Answer.value;
-                q2Answer = q2Answer.value;
-                q3Answer = q3Answer.value;
-                q4Answer = q4Answer.value;
-                q5Answer = q5Answer.value;
-                q6Answer = q6Answer.value;
+    function showQuestion2() {
+        document.getElementById('text3').classList.add('hidden');
+        document.getElementById('question2').classList.remove('hidden');
+    }
 
-                if (q1Answer === "有") {
-                    a=1; e=a+b+c+x+y+z; 
-                } 
-		if (q2Answer === "有") {
-                    b=2; e=a+b+c+x+y+z;
-                }
-		if (q3Answer === "有") {
-                    c=4; e=a+b+c+x+y+z;
-                } 
-		if (q4Answer === "有") {
-                    x=8; e=a+b+c+x+y+z;
-                } 
-		if (q5Answer === "有") {
-                    y=16; e=a+b+c+x+y+z;
-                } 
-		if (q6Answer === "有") {
-                    z=32; e=a+b+c+x+y+z;
-                } 
-		result ="我讀出來了<br/>你想的數字是:</br>" + e + " !!!";
-                document.querySelector(".result-container").style.display = "block";
-                document.getElementById("result").innerHTML = result;
-                document.querySelector(".calculate-button").style.display = "none";
-                document.getElementById("game-section").style.display = "none";
-  
-		
-            } else {
-                result = "請回答所有問題";
-            }
+    function showQuestion3() {
+        document.getElementById('question2').classList.add('hidden');
+        document.getElementById('question3').classList.remove('hidden');
+    }
 
-            document.querySelector(".calculate-button").style.display = "none";
-            document.querySelector(".result").innerHTML = result;
+    function checkAnswer(answer) {
+        answer1 = answer;
+        showText3();
+    }
+
+    function checkAnswer2(answer) {
+        answer2 = answer;
+        showQuestion3();
+    }
+
+    function checkAnswer3(answer) {
+        answer3 = answer;
+        displayResult();
+    }
+
+    function displayResult() {
+        let result = document.getElementById('answer');
+        let finalAnswer;
+
+        if (answer1 === '是' && answer2 === '是' && answer3 === '是') {
+            finalAnswer = '你說的是實話，硬幣在你的左手。';
+        } else if (answer1 === '是' && answer2 === '是' && answer3 === '不是') {
+            finalAnswer = '你說的是謊話，硬幣在你的左手。';
+        } else if (answer1 === '是' && answer2 === '不是' && answer3 === '是') {
+            finalAnswer = '你說的是謊話，硬幣在你的右手。';
+        } else if (answer1 === '是' && answer2 === '不是' && answer3 === '不是') {
+            finalAnswer = '你說的是實話，硬幣在你的右手。';
+        } else if (answer1 === '不是' && answer2 === '不是' && answer3 === '是') {
+            finalAnswer = '你說的是實話，硬幣在你的左手。';
+        } else if (answer1 === '不是' && answer2 === '不是' && answer3 === '不是') {
+            finalAnswer = '你說的是謊話，硬幣在你的左手。';
+        } else if (answer1 === '不是' && answer2 === '是' && answer3 === '不是') {
+            finalAnswer = '你說的是實話，硬幣在你的右手。';
+        } else if (answer1 === '不是' && answer2 === '是' && answer3 === '是') {
+            finalAnswer = '你說的是謊話，硬幣在你的右手。';
         }
-// 阻止 F12 開發者工具
-document.addEventListener("keydown", function (e) {
-    if (e.keyCode == 123) {
-        e.preventDefault();
-        alert("此網頁禁止使用F12");
-        }
-    });
 
-// 禁用右鍵點擊
-document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-        alert("此網頁禁止使用右鍵");
-    });
 
-// 禁用 Ctrl+U 組合鍵
-document.addEventListener("keydown", function (e) {
-    if (e.ctrlKey && e.key === "u") {
-        e.preventDefault();
-        alert("此網頁禁止使用Ctrl+U 組合鍵");
-        }
-    });
+        result.innerHTML = '測謊結果: ' + finalAnswer;
+        document.getElementById('question3').classList.add('hidden');
+        document.getElementById('result').classList.remove('hidden');
+    }
+	// 阻止 F12 開發者工具
+	document.addEventListener("keydown", function (e) {
+  	  if (e.keyCode == 123) {
+       	  e.preventDefault();
+          alert("此網頁禁止使用F12");
+        	}
+   	 });
+
+	// 禁用右鍵點擊
+	document.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          alert("此網頁禁止使用右鍵");
+    		});
 
 	// 禁用 Ctrl+U 組合鍵
 	document.addEventListener("keydown", function (e) {
-    	if (e.ctrlKey && e.key === "U") {
+    	if (e.ctrlKey && e.key === "u") {
           e.preventDefault();
           alert("此網頁禁止使用Ctrl+U 組合鍵");
         	}
     	});
-    </script>
+</script>
+
 </body>
 </html>
