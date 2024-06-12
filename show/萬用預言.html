@@ -116,7 +116,7 @@
         <h1 id="title">預言卡片</h1>
         <p id="instruction">請輸入密碼揭開卡片</p>
         <div id="inputSection">
-            <input type="password" id="passwordInput" placeholder="輸入密碼">
+            <input type="text" id="passwordInput" placeholder="輸入密碼">
             <button onclick="checkPassword()">提交</button>
         </div>
         <div id="result" class="result"></div>
@@ -201,7 +201,8 @@
                 case '857142':
                     result.innerHTML = '我今天有一個預感<br>如果讓你骰骰子，你會骰到:<br>"6點"';
                     break;
-                case '8017':
+
+
                 case '8017':
                     result.innerHTML = '我今天有一個預感<br>如果讓你想一張牌，你會想到:<br>"梅花四"';
                     break;
@@ -358,7 +359,51 @@
                 case '8527':
                     result.innerHTML = '我今天有一個預感<br>如果讓你想一張牌，你會想到:<br>"方塊九"';
                     break;
+
+
+                case '815107':
+                    result.innerHTML = '你會把"一元"放在"左手"<br>"五元"放在"右手"<br>"十元"放在"口袋"';
+                    break;
+                case '811057':
+                    result.innerHTML = '你會把"一元"放在"左手"<br>"十元"放在"右手"<br>"五元"放在"口袋"';
+                    break;
+                case '851107':
+                    result.innerHTML = '你會把"五元"放在"左手"<br>"一元"放在"右手"<br>"十元"放在"口袋"';
+                    break;
+                case '851017':
+                    result.innerHTML = '你會把"五元"放在"左手"<br>"十元"放在"右手"<br>"一元"放在"口袋"';
+                    break;
+                case '810157':
+                    result.innerHTML = '你會把"十元"放在"左手"<br>"一元"放在"右手"<br>"五元"放在"口袋"';
+                    break;
+                case '810517':
+                    result.innerHTML = '你會把"十元"放在"左手"<br>"五元"放在"右手"<br>"一元"放在"口袋"';
+                    break;
+
+
+                case '81117':
+                    result.innerHTML = '第一次你會放"左手"<br>第二次你也會放"左手"<br>第三次還是會放"左手"';
+                    break;
+                case '81017':
+                    result.innerHTML = '第一次你會放"左手"<br>第二次你會放"右手"<br>第三次你會放"左手"';
+                    break;
+                case '81107':
+                    result.innerHTML = '第一次你會放"左手"<br>第二次你會放"左手"<br>第三次你會放"右手"';
+                    break;
+                case '80107':
+                    result.innerHTML = '第一次你會放"右手"<br>第二次你會放"左手"<br>第三次你會放"右手"';
+                    break;
+                case '80017':
+                    result.innerHTML = '第一次你會放"右手"<br>第二次你會放"右手"<br>第三次你會放"左手"';
+                    break;
+                case '80007':
+                    result.innerHTML = '第一次你會放"右手"<br>第二次你也會放"右手"<br>第三次還是會放"右手"';
+                    break;
+
+
+
                 default:
+
                     result.textContent = '密碼錯誤';
                     return; // 停止執行，保留輸入框和標題
             }
