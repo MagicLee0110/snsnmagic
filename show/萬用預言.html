@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>預言卡片</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Long+Cang&display=swap');
-        
         body {
-            font-family: 'Indie Flower', cursive;
+            font-family: 'Ma Shan Zheng', cursive;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -76,7 +75,6 @@
             flex-direction: column; /* 使其内容垂直对齐 */
             text-align: center; /* 使文字居中 */
             white-space: pre-wrap; /* 保留换行和空格 */
-            font-family: 'Long Cang', cursive; /* 指定与 body 相同的字体 */
         }
         img {
             max-width: 100%;
@@ -95,7 +93,7 @@
             font-size: 0.8em;
             color: #00796b;
             display: none;
-            font-family: 'Indie Flower', cursive; /* 指定与 body 相同的字体 */
+            font-family: 'Ma Shan Zheng', cursive;
         }
         .dear {
             font-size: 1.2em;
@@ -105,9 +103,8 @@
             display: none;
             text-align: left; /* 確保文字靠左對齊 */
             align-self: flex-start; /* 讓元素靠左對齊 */
-            font-family: 'Long Cang', cursive; /* 指定与 body 相同的字体 */
+            font-family: 'Ma Shan Zheng', cursive;
         }
-
     </style>
 </head>
 <body>
@@ -124,35 +121,35 @@
     </div>
 
     <script>
-	// 阻止 F12 開發者工具
-	document.addEventListener("keydown", function (e) {
-  	  if (e.keyCode == 123) {
-       	  e.preventDefault();
-          alert("此網頁禁止使用F12");
-        	}
-   	 });
+        // 阻止 F12 開發者工具
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode == 123) {
+                e.preventDefault();
+                alert("此網頁禁止使用F12");
+            }
+        });
 
-	// 禁用右鍵點擊
-	document.addEventListener("contextmenu", function (e) {
-          e.preventDefault();
-          alert("此網頁禁止使用右鍵");
-    		});
+        // 禁用右鍵點擊
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+            alert("此網頁禁止使用右鍵");
+        });
 
-	// 禁用 Ctrl+u 組合鍵
-	document.addEventListener("keydown", function (e) {
-    	if (e.ctrlKey && e.key === "u") {
-          e.preventDefault();
-          alert("此網頁禁止使用Ctrl+U 組合鍵");
-        	}
-    	});
+        // 禁用 Ctrl+u 組合鍵
+        document.addEventListener("keydown", function (e) {
+            if (e.ctrlKey && e.key === "u") {
+                e.preventDefault();
+                alert("此網頁禁止使用Ctrl+U 組合鍵");
+            }
+        });
 
-	// 禁用 Ctrl+U 組合鍵
-	document.addEventListener("keydown", function (e) {
-    	if (e.ctrlKey && e.key === "U") {
-          e.preventDefault();
-          alert("此網頁禁止使用Ctrl+U 組合鍵");
-        	}
-    	});
+        // 禁用 Ctrl+U 組合鍵
+        document.addEventListener("keydown", function (e) {
+            if (e.ctrlKey && e.key === "U") {
+                e.preventDefault();
+                alert("此網頁禁止使用Ctrl+U 組合鍵");
+            }
+        });
 
         function checkPassword() {
             const password = document.getElementById('passwordInput').value;
@@ -1367,10 +1364,7 @@
                     result.innerHTML = '你會把<br>紅色骰子骰出"六點"<br>白色骰子骰出"六點"<br>藍色骰子骰出"六點" ';
                     break;
 
-
-
                 default:
-
                     result.textContent = '密碼錯誤';
                     return; // 停止執行，保留輸入框和標題
             }
