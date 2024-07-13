@@ -1,364 +1,168 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" contect="width=device-width,initial-scale=1.0" />
-    <title>數字讀心遊樂區</title>
+    <title>魔術讀數字</title>
     <style>
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-
-        h1 {
-            color: #005c97;
-            font-size: 30px;
-        }
-
-        p {
-            color: #444;
-            font-size: 28px;
-        }
-
-        form {
-            border: 1px solid #ccc;
-            background-color: #fff;
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            margin: 0;
             padding: 20px;
-            border-radius: 10px;
-            width: 400px;
+            text-align: center;
+        }
+        #explanation {
+            margin-top: 20%;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .question {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        table {
             margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
         }
-
-input[type="radio"]+label {
-    font-size: 24px; /* 調整此數值以符合你的喜好 */
-    margin-left: 5px;
-}
-
-        input[type="button"] {
-            background-color: #005c97;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
         }
-
-        input[type="button"]:hover {
-            background-color: #004a7f;
-        }
-
-        .result {
-            margin-top: 20px;
-            font-size: 50px;
-            font-weight: bold;
-            color: #008000;
-        }
-
-        .question-container {
+        #result, #nextStep {
             display: none;
-        }
-
-        .current-question {
-            display: block;
-        }
-        .calculate-button{
             margin-top: 20px;
-            background-color: #005c97;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-	    width: 200px;
-	    hright: 200px;
-	    font-size: 16px;
         }
-
-        .start-button, .next-button {
+        #returnButton {
             margin-top: 20px;
-            background-color: #005c97;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-	    width: 200px;
-	    hright: 200px;
-	    font-size: 16px;
         }
-
-        .start-button:hover, .next-button:hover {
-            background-color: #004a7f;
+        #readingMind {
+            font-size: 1.5em;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>數字讀心遊樂區</h1>
-	<br>
-	<br>
-	<h3>歡迎來到數字讀心遊樂區</h3>
-	<h3>我將用我的超能力，來讀出你/妳所想的數字!</h3>
-        <h3>現在，請幫我想一個1-63之間的數字。</h3>
-        <h3>想好後按下"開始讀心"，來進入讀心術的世界!</h3>
-	<br>
-	<br>
-	<br>
-        <input type="button" class="start-button" value="開始讀心" onclick="startGame()">
+    <div id="explanation">
+        <h1>歡迎來到魔術讀數字遊戲</h1>
+        <p>想一個1到63之間的數字，並回答以下六個問題。每個問題的數字範圍將幫助我們猜出你想的數字。</p>
+        <button onclick="startGame()">開始遊戲</button>
     </div>
-
-    <div id="game-section" style="display: none;">
-        <h1>讀心術</h1>
-
-        <div class="question-container" id="question1">
-            <p>問題1：你想的數字裡面有
-<br>1、3、5、7、9、11、13
-<br>15、17、19、21、23、25
-<br>27、29、31、33、35、37
-<br>39、41、43、45、47、49
-<br>51、53、55、57
-<br>59、61、63。
-<br>其中一個嗎？</p>
-<input type="radio" name="q1" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q1" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
-
-            <br>
-        </div>
-
-        <div class="question-container" id="question2">
-            <p>問題2：你想的數字裡面有
-<br>2、3、6、7、10、11
-<br>14、15、18、19、22、23
-<br>26、27、30、31、34、35
-<br>38、39、42、43、46、47
-<br>50、51、54、55
-<br>58、59、62、63。
-<br>其中一個嗎？</p>
-<input type="radio" name="q2" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q2" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
-
-            <br>
-        </div>
-        <div class="question-container" id="question3">
-            <p>問題3：你想的數字裡面有
-<br>4、5、6、7、12、13
-<br>14、15、20、21、22、23
-<br>28、29、30、31、36、37
-<br>38、39、44、45、46、47
-<br>52、53、54、55、60
-<br>61、62、63。
-<br>其中一個嗎？</p>
-<input type="radio" name="q3" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q3" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
-
-            <br>
-        </div>
-        <div class="question-container" id="question4">
-            <p>問題4：你想的數字裡面有
-<br>8、9、10、11、12、13
-<br>14、15、24、25、26、27
-<br>28、29、30、31、40、41
-<br>42、43、44、45、46、47
-<br>56、57、58、59
-<br>60、61、62、63
-<br>其中一個嗎？</p>
-<input type="radio" name="q4" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q4" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
-
-            <br>
-        </div>
-        <div class="question-container" id="question5">
-            <p>問題5：你想的數字裡面有
-<br>16、17、18、19、20、21
-<br>22、23、24、25、26、27
-<br>28、29、30、31、48、49
-<br>50、51、52、53、54、55
-<br>56、57、58、59、60
-<br>61、62、63
-<br>其中一個嗎？</p>
-<input type="radio" name="q5" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q5" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
-
-            <br>
-        </div>
-        <div class="question-container" id="question6">
-            <p>問題6：你想的數字裡面有
-<br>32、33、34、35、36、37
-<br>38、39、40、41、42、43
-<br>44、45、46、47、48、49
-<br>50、51、52、53、54、55
-<br>56、57、58、59、60、61
-<br>62、63
-<br>其中一個嗎？</p>
-<input type="radio" name="q6" value="有" id="q1_yes">
-<label for="q1_yes">有</label>
-<input type="radio" name="q6" value="沒有" id="q1_no">
-<label for="q1_no">沒有</label>
-
-            <br>
-        </div>
-
-        <input type="button" class="next-button" value="繼續" onclick="showNextQuestion()">
-        <input type="button" class="calculate-button" value="查看讀心結果" onclick="calculateAnswer()" style="display: none;">
-        <input type="button" class="start-button" value="提交" onclick="checkAnswer()" style="display: none;">
+    <div class="question" id="question1" style="display: none;">
+        <h2>問題1：你想的數字裡面有以下其中一個嗎？</h2>
+        <table>
+            <tr><td>1</td><td>3</td><td>5</td><td>7</td><td>9</td><td>11</td></tr>
+        </table>
+        <button onclick="answerQuestion(1, true)">是</button>
+        <button onclick="answerQuestion(1, false)">否</button>
     </div>
-
-    <div class="result-container" style="display: none;">
-        <div class="result" id="result"></div>
+    <div class="question" id="question2" style="display: none;">
+        <h2>問題2：你想的數字裡面有以下其中一個嗎？</h2>
+        <table>
+            <tr><td>2</td><td>3</td><td>6</td><td>7</td><td>10</td><td>11</td></tr>
+        </table>
+        <button onclick="answerQuestion(2, true)">是</button>
+        <button onclick="answerQuestion(2, false)">否</button>
     </div>
-
+    <div class="question" id="question3" style="display: none;">
+        <h2>問題3：你想的數字裡面有以下其中一個嗎？</h2>
+        <table>
+            <tr><td>4</td><td>5</td><td>6</td><td>7</td><td>12</td><td>13</td></tr>
+        </table>
+        <button onclick="answerQuestion(3, true)">是</button>
+        <button onclick="answerQuestion(3, false)">否</button>
+    </div>
+    <div class="question" id="question4" style="display: none;">
+        <h2>問題4：你想的數字裡面有以下其中一個嗎？</h2>
+        <table>
+            <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td></tr>
+        </table>
+        <button onclick="answerQuestion(4, true)">是</button>
+        <button onclick="answerQuestion(4, false)">否</button>
+    </div>
+    <div class="question" id="question5" style="display: none;">
+        <h2>問題5：你想的數字裡面有以下其中一個嗎？</h2>
+        <table>
+            <tr><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+        </table>
+        <button onclick="answerQuestion(5, true)">是</button>
+        <button onclick="answerQuestion(5, false)">否</button>
+    </div>
+    <div class="question" id="question6" style="display: none;">
+        <h2>問題6：你想的數字裡面有以下其中一個嗎？</h2>
+        <table>
+            <tr><td>32</td><td>33</td><td>34</td><td>35</td><td>36</td><td>37</td></tr>
+        </table>
+        <button onclick="answerQuestion(6, true)">是</button>
+        <button onclick="answerQuestion(6, false)">否</button>
+    </div>
+    <div id="nextStep" style="display: none;">
+        <p id="readingMind">我將開始讀心</p>
+        <button onclick="showResult()">下一步</button>
+    </div>
+    <div id="result" style="display: none;">
+        <h2>你想的數字是：<span id="number"></span></h2>
+        <div id="returnButton">
+            <button onclick="redirectToURL()">返回</button>
+        </div>
+    </div>
     <script>
-        let currentQuestion = 1;
+        let score = 0;
+        const points = [1, 2, 4, 8, 16, 32];
 
         function startGame() {
-            document.getElementById("game-section").style.display = "block";
-            document.querySelector("div").style.display = "none";
-            showCurrentQuestion();
+            document.getElementById('explanation').style.display = 'none';
+            document.getElementById('question1').style.display = 'block';
         }
 
-        function showCurrentQuestion() {
-            const currentQuestionDiv = document.querySelector(".current-question");
-            if (currentQuestionDiv) {
-                currentQuestionDiv.classList.remove("current-question");
+        function answerQuestion(questionNumber, answer) {
+            if (answer) {
+                score += points[questionNumber - 1];
             }
-            const questionDiv = document.getElementById("question" + currentQuestion);
-            questionDiv.classList.add("current-question");
-
-            if (currentQuestion === 6) {
-                document.querySelector(".next-button").style.display = "none";
-                document.querySelector(".calculate-button").style.display = "inline-block";
-                document.querySelector(".start-button").style.display = "none";
+            document.getElementById('question' + questionNumber).style.display = 'none';
+            if (questionNumber < 6) {
+                document.getElementById('question' + (questionNumber + 1)).style.display = 'block';
             } else {
-                document.querySelector(".next-button").style.display = "inline-block";
-                document.querySelector(".calculate-button").style.display = "none";
-                document.querySelector(".start-button").style.display = "none";
+                document.getElementById('nextStep').style.display = 'block';
+                document.getElementById('result').style.display = 'none';
             }
         }
 
-function showNextQuestion() {
-    const currentQuestionAnswers = document.querySelectorAll('#question' + currentQuestion + ' input[type="radio"]');
-    let answered = false;
-
-    currentQuestionAnswers.forEach(answer => {
-        if (answer.checked) {
-            answered = true;
+        function showResult() {
+            document.getElementById('nextStep').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('number').innerText = score;
         }
-    });
 
-    if (!answered) {
-        return;
-    }
-
-    currentQuestion++;
-    showCurrentQuestion();
-}
-
-        function calculateAnswer() {
-            var q1Answer = document.querySelector('input[name="q1"]:checked');
-            var q2Answer = document.querySelector('input[name="q2"]:checked');
-            var q3Answer = document.querySelector('input[name="q3"]:checked');
-            var q4Answer = document.querySelector('input[name="q4"]:checked');
-            var q5Answer = document.querySelector('input[name="q5"]:checked');
-            var q6Answer = document.querySelector('input[name="q6"]:checked');
-            var result = "";
-	    var a=0;
-	    var b=0;
-	    var c=0;
-	    var x=0;
-	    var y=0;
-	    var z=0;
-	    var e=0;
-
-            if (q1Answer && q2Answer && q3Answer && q4Answer && q5Answer && q6Answer) {
-                q1Answer = q1Answer.value;
-                q2Answer = q2Answer.value;
-                q3Answer = q3Answer.value;
-                q4Answer = q4Answer.value;
-                q5Answer = q5Answer.value;
-                q6Answer = q6Answer.value;
-
-                if (q1Answer === "有") {
-                    a=1; e=a+b+c+x+y+z; 
-                } 
-		if (q2Answer === "有") {
-                    b=2; e=a+b+c+x+y+z;
-                }
-		if (q3Answer === "有") {
-                    c=4; e=a+b+c+x+y+z;
-                } 
-		if (q4Answer === "有") {
-                    x=8; e=a+b+c+x+y+z;
-                } 
-		if (q5Answer === "有") {
-                    y=16; e=a+b+c+x+y+z;
-                } 
-		if (q6Answer === "有") {
-                    z=32; e=a+b+c+x+y+z;
-                } 
-		result ="我讀出來了<br/>你想的數字是:</br>" + e + " !!!";
-                document.querySelector(".result-container").style.display = "block";
-                document.getElementById("result").innerHTML = result;
-                document.querySelector(".calculate-button").style.display = "none";
-                document.getElementById("game-section").style.display = "none";
-  
-		
-            } else {
-                result = "請回答所有問題";
-            }
-
-            document.querySelector(".calculate-button").style.display = "none";
-            document.querySelector(".result").innerHTML = result;
+        function redirectToURL() {
+            window.location.href = 'https://magiclee0110.github.io/snsnmagic/show/mentalist#thirdPage'; // Replace 'YOUR_URL_HERE' with your desired URL
         }
-// 阻止 F12 開發者工具
-document.addEventListener("keydown", function (e) {
-    if (e.keyCode == 123) {
-        e.preventDefault();
-        alert("此網頁禁止使用F12");
-        }
-    });
-
-// 禁用右鍵點擊
-document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-        alert("此網頁禁止使用右鍵");
-    });
-
-// 禁用 Ctrl+U 組合鍵
-document.addEventListener("keydown", function (e) {
-    if (e.ctrlKey && e.key === "u") {
-        e.preventDefault();
-        alert("此網頁禁止使用Ctrl+U 組合鍵");
-        }
-    });
-	// 禁用 Ctrl+U 組合鍵
-	document.addEventListener("keydown", function (e) {
-    	if (e.ctrlKey && e.key === "U") {
-          e.preventDefault();
-          alert("此網頁禁止使用Ctrl+U 組合鍵");
-        	}
-    	});
-
     </script>
 </body>
 </html>
