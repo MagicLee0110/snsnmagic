@@ -1,395 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
-  <title>魔術師森森的魔幻空間</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* 樣式美化 */
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #1f1f1f;
-      color: #ccc;
-      transition: background-color 0.5s;
-    }
-    header {
-      background-color: #111;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: background-color 0.5s;
-    }
-    main {
-      padding: 20px;
-      text-align: center;
-    }
-    .page {
-      display: none;
-      transition: opacity 0.5s;
-      opacity: 0;
-    }
-    .active {
-      display: block;
-      opacity: 1;
-    }
-    .profile-info {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: left;
-      background-color: #2f2f2f;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-      transition: transform 0.5s, box-shadow 0.5s;
-      transform: translateY(20px);
-    }
-    .profile-info h2 {
-      color: #fff;
-      border-bottom: 1px solid #444;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-    .profile-info p {
-      line-height: 1.6;
-    }
-    .navigation {
-      position: relative;
-      top: 50px; /* 向下移動 50px */
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      justify-content: space-between;
-      width: 200px;
-    }
-    .navigation button {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: 2px solid #fff; /* 預設的白色邊框 */
-      cursor: pointer;
-      opacity: 0.9;
-      transition: opacity 0.3s ease;
-    }
-    .navigation button:hover {
-      opacity: 1;
-    }
-    /* 保留的原有圖片效果 */
-.profile-img {
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  width: 250px;
-  height: auto;
-  margin-top: 20px;
-}
-
-    /* 保留的第二頁按鈕效果 */
-    .flex-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 20px;
-    }
-    .link-box {
-      width: calc(50% - 20px);
-      background-color: #2f2f2f;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-      transition: transform 0.5s, box-shadow 0.5s;
-    }
-    .link-box a {
-      display: block;
-      text-decoration: none;
-      color: #fff;
-      padding: 15px;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-    .link-box a:hover {
-      background-color: #333;
-    }
-    .profile-info2 {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: left;
-      background-color: #2f2f2f;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-      transition: transform 0.5s, box-shadow 0.5s;
-      transform: translateY(20px);
-      margin-bottom: 20px; /* 新增間距 */
-    }
-    /* 預約按鈕樣式 */
-    .profile-info2 button {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-      margin-top: 10px;
-    }
-    .profile-info2 button:hover {
-      opacity: 1;
-    }
-    h2 {
-     color: gold !important; /* 將所有 h2 的文字顏色設置為黃色 */
-    }
-
-    .profile-info h2,
-    .profile-info2 h2 {
-     color: #f8d200; /* 設置文本顏色為黃色 */
-     }
-
-.center-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔術師森森的魔幻空間</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #0d0d0d, #1b1b1b);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            padding: 2em;
+            border: 2px solid #fff;
+            border-radius: 20px;
+            background: rgba(20, 20, 20, 0.8);
+            box-shadow: 0 0 35px rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 1;
+            max-width: 90%;
+            margin: auto;
+            animation: pulse 10s infinite;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            color: #e74c3c;
+            animation: fadeIn 2s ease-in-out, colorShift 6s linear infinite, glow 1.5s alternate infinite;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 2em;
+            color: #bdc3c7;
+            animation: fadeIn 3s ease-in-out;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #3498db;
+            padding: 1em 2em;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+        a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: width 0.3s, height 0.3s;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        a:hover::before {
+            width: 400%;
+            height: 400%;
+        }
+        a:hover {
+            background-color: #2980b9;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes colorShift {
+            0% { color: #e74c3c; }
+            50% { color: #f39c12; }
+            100% { color: #e74c3c; }
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #e74c3c, 0 0 20px #e74c3c, 0 0 30px #e74c3c, 0 0 40px #e74c3c, 0 0 50px #e74c3c, 0 0 60px #e74c3c, 0 0 70px #e74c3c;
+            }
+            to {
+                text-shadow: 0 0 15px #f39c12, 0 0 25px #f39c12, 0 0 35px #f39c12, 0 0 45px #f39c12, 0 0 55px #f39c12, 0 0 65px #f39c12, 0 0 75px #f39c12;
+            }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+            background-size: 200% 200%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        .particles div {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            animation: move 30s linear infinite;
+            opacity: 0.8;
+        }
+        @keyframes move {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+        .particles div:nth-child(odd) {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            top: 15%;
+            left: 15%;
+            animation-duration: 35s;
+        }
+        .particles div:nth-child(even) {
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.3);
+            top: 60%;
+            left: 60%;
+            animation-duration: 40s;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5em;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            a {
+                padding: 0.8em 1.5em;
+                font-size: 1em;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 1em;
+                border-radius: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            a {
+                padding: 0.6em 1em;
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>魔術師森森的魔幻空間</h1>
-  </header>
-  <main>
-    <!-- 第一頁 - 個人介紹 -->
-    <div class="page active">
-      <div class="profile-info">
-    <a href="https://magiclee0110.github.io/mental/Pro" target="_blank" style="text-decoration: none; color: inherit;">
-      <h2>魔術師森森</h2>
-    </a>
-    </a>
-    <p>
-      <strong>個人風格:</strong>
-          <ul>
-          <li>神秘</li>
-	  <li>低調</li>
-          </ul>
-      
-      <strong>資歷:</strong>
-	  <ul>
-          <li>專研魔術至今已超過10年</li>
-	  </ul>
-       <strong>魔術專長:</strong>
-          <ul>
-          <li>心靈魔術</li>
-	  <li>紙牌魔術</li>
-          <li>近距離魔術</li>
-          </ul>
-
-      <strong>經歷:</strong>
-          <ul>
-            <li>台科大魔術社心靈魔術講座講師</li>
-            <li>朝陽科大魔術社心靈魔術講座講師</li>
-            <li>中興大學魔術社心靈魔術講座講師</li>
-            <li>勤益科大魔術社心靈魔術講座講師</li>
-            <li>曾受邀飯店、壽司店、燒烤店等擔任桌邊魔術師</li>
-          </ul>
-      <br>
-       <!-- 插入個人照片 -->
-        <div class="center-content">
-        <img class="profile-img" src="個人照.jpg" alt="個人照片">
-        </div>
-      <br>
-    </p>
-      </div>
+    <div class="particles">
+        <div style="top: 20%; left: 10%;"></div>
+        <div style="top: 50%; left: 30%;"></div>
+        <div style="top: 70%; left: 70%;"></div>
+        <div style="top: 30%; left: 50%;"></div>
+        <div style="top: 80%; left: 80%;"></div>
     </div>
-
-    <!-- 第二頁 - 分類連結 -->
-    <div class="page" id="secondPage">
-      <h2>服務項目</h2>
-      <br>
-      <div class="flex-container">
-        <div class="link-box">
-          <a href="表演預約區.html">表演項目預約</a>
-        </div>
-        <div class="link-box">
-          <a href="講座預約區.html">魔術講座預約<br>(大專院校限定)</a>
-        </div>
-        <div class="link-box">
-          <a href="魔術課程預約區.html">魔術課程預約</a>
-        </div>
-        <div class="link-box">
-          <a href="表演回饋區.html">表演回饋區</a>
-        </div>
-        <div class="link-box">
-          <a href="聯絡我們.html">聯絡我們</a>
-        </div>
-      </div>
+    <div class="container">
+        <h1>歡迎來到</h1>
+        <h1>魔術師森森的魔幻空間</h1>
+        <p>請點擊下面的按鈕以進入。</p>
+        <a href="https://mentalist02.pythonanywhere.com/mentalist.html" target="_blank">進入網頁</a>
     </div>
-
-    <!-- 第三頁 -->
-    <div class="page" id="thirdPage">
-      <h2>魔幻森林遊樂園</h2>
-      <p><a href="https://www.icloud.com/shortcuts/4e6860f26f0341f5997b0354986ff8a5" target="_blank" style="color: rgba(255, 255, 255, 0.75); text-decoration: none;">歡迎來到魔幻森林遊樂園，這裡森森將會開發許多線上魔術讓大家體驗，讓我們一同享受魔術帶來樂趣吧!</a></p>
-      <div class="profile-info2">
-        <h2><strong>魔術名稱:</strong> 數字讀心術</h2>
-        <p><strong>簡介:</strong> 觀眾從1-63內想一個數字，我將讀出你/妳心裡想的數字。</p>
-        <p><strong>魔術類型:</strong> 心靈魔術。</p>
-        <p><strong>適合對象:</strong> 所有年齡層。</p>
-        <p><strong>遊玩時間:</strong> 1~2分鐘。</p>
-        <!-- 點擊進入 -->
-<button onclick="openBookingForm('讀心世界.html')">點擊進入</button>
-      </div>
-
-      <div class="profile-info2">
-        <h2><strong>魔術名稱:</strong>心電感應</h2>
-        <p><strong>簡介:</strong> 我將透過超能力，與你/妳來場美妙的心電感應!</p>
-        <p><strong>魔術類型:</strong> 心靈魔術。</p>
-        <p><strong>適合對象:</strong> 10歲以上。</p>
-        <p><strong>遊玩時間:</strong> 2~3分鐘。</p>
-        <!-- 點擊進入 -->
-<button onclick="openBookingForm('心電感應.html')">點擊進入</button>
-      </div>
-
-      <div class="profile-info2">
-        <h2><strong>魔術名稱:</strong>測謊術</h2>
-        <p><strong>簡介:</strong> 我將透過神秘的心理技巧，判斷出你/妳說的是實話還是謊話!</p>
-        <p><strong>魔術類型:</strong> 心靈魔術。</p>
-        <p><strong>適合對象:</strong> 10歲以上。</p>
-        <p><strong>遊玩時間:</strong> 2~3分鐘。</p>
-        <!-- 點擊進入 -->
-<button onclick="openBookingForm('測謊遊樂區.html')">點擊進入</button>
-      </div>
-
-      <div class="profile-info2">
-        <h2><strong>魔術名稱:</strong>胡迪尼催眠術</h2>
-        <p><strong>簡介:</strong> 此魔術為森森本人現場表演專用，逃脫大師胡迪尼將用他的高超技巧，催眠你的大腦!</p>
-        <p><strong>魔術類型:</strong> 心靈魔術。</p>
-        <p><strong>適合對象:</strong> 10歲以上。</p>
-        <p><strong>遊玩時間:</strong> 3-5分鐘。</p>
-        <!-- 點擊進入 -->
-<button onclick="openBookingForm('胡迪尼.html')">點擊進入</button>
-      </div>
-
-      <div class="profile-info2">
-        <h2><strong>魔術名稱:</strong>預言卡</h2>
-        <p><strong>簡介:</strong> 這裡是森森為你/妳量身訂做的預言卡，快來看看森森為你/妳寫下了什麼預言吧!</p>
-        <p><strong>魔術類型:</strong> 心靈魔術。</p>
-        <p><strong>適合對象:</strong> 不限。</p>
-        <p><strong>遊玩時間:</strong> 不限。</p>
-        <!-- 點擊進入 -->
-<button onclick="openBookingForm('萬用預言.html')">點擊進入</button>
-      </div>
-
-    </div>
-    
-    <!-- 翻頁按鈕 -->
-<div class="navigation" style="width: 100%; text-align: center;">
-  <button id="prevPageButton" style="margin: 0 auto; display: none;">上一頁</button>
-  <button id="nextPageButton" style="margin: 0 auto; display: none;">下一頁</button>
-</div>
-
-      <br>
-      <br>
-  </main>
-
-  <script>
-    const pages = document.querySelectorAll('.page');
-    let currentPage = 0;
-    const prevPageButton = document.getElementById('prevPageButton');
-    const nextPageButton = document.getElementById('nextPageButton');
-
-function showPage(pageNumber) {
-  for (let i = 0; i < pages.length; i++) {
-    if (i === pageNumber) {
-      pages[i].classList.add('active');
-    } else {
-      pages[i].classList.remove('active');
-    }
-  }
-  document.body.scrollIntoView({ behavior: 'smooth', block: 'start' }); // 将整个页面滚动到顶部
-  prevPageButton.style.display = pageNumber === 0 ? 'none' : 'block';
-  nextPageButton.style.display = pageNumber === pages.length - 1 ? 'none' : 'block';
-}
-
-
-
-    function goToPrevPage() {
-      currentPage = Math.max(0, currentPage - 1);
-      showPage(currentPage);
-    }
-
-    function goToNextPage() {
-      currentPage = Math.min(pages.length - 1, currentPage + 1);
-      showPage(currentPage);
-    }
-
-    prevPageButton.addEventListener('click', goToPrevPage);
-    nextPageButton.addEventListener('click', goToNextPage);
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'ArrowRight') {
-        goToNextPage();
-      } else if (event.key === 'ArrowLeft') {
-        goToPrevPage();
-      }
-    });
-
-    showPage(currentPage);
-
-  function openBookingForm(pageUrl) {
-    window.location.href = pageUrl; // 跳转到指定的页面
-  }
-	// 阻止 F12 開發者工具
-	document.addEventListener("keydown", function (e) {
-  	  if (e.keyCode == 123) {
-       	  e.preventDefault();
-          alert("此網頁禁止使用F12");
-        	}
-   	 });
-
-	// 禁用右鍵點擊
-	document.addEventListener("contextmenu", function (e) {
-          e.preventDefault();
-          alert("此網頁禁止使用右鍵");
-    		});
-
-	// 禁用 Ctrl+u 組合鍵
-	document.addEventListener("keydown", function (e) {
-    	if (e.ctrlKey && e.key === "u") {
-          e.preventDefault();
-          alert("此網頁禁止使用Ctrl+U 組合鍵");
-        	}
-    	});
-
-	// 禁用 Ctrl+U 組合鍵
-	document.addEventListener("keydown", function (e) {
-    	if (e.ctrlKey && e.key === "U") {
-          e.preventDefault();
-          alert("此網頁禁止使用Ctrl+U 組合鍵");
-        	}
-    	});
-
-
-// 獲取 URL 中的錨點部分(這裡是其他網頁導到第二頁第三頁的方法)
-const urlHash = window.location.hash;
-
-// 如果 URL 中有錨點，並且錨點與第二頁的 ID 匹配，則顯示第二頁，第三頁也是
-if (urlHash === '#secondPage') {
-  currentPage = 1; // 第二頁在頁面列表中索引為1
-  showPage(currentPage);
-  history.replaceState(null, null, window.location.pathname);// 移除錨點
-} else if (urlHash === '#thirdPage') {
-  currentPage = 2; // 第三頁在頁面列表中索引為2
-  showPage(currentPage);
-  history.replaceState(null, null, window.location.pathname);// 移除錨點
-}
-  </script>
-<footer style="text-align: center; margin-top: 20px;">
-  <p><a href="https://gg0.us/12505" target="_blank" style="color: rgba(255, 255, 255, 0.75); text-decoration: none;">©魔術師森森的魔幻空間</a></p>
-
-  <br>
-</footer>
 </body>
 </html>
