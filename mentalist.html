@@ -78,16 +78,14 @@
       opacity: 1;
     }
     /* 保留的原有圖片效果 */
-    .profile-img {
-      position: absolute;
-      left: 50px; /* 向右調整 Y 像素 */
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      /* 調整圖片大小 */
-      width: 250px; /* 調整圖片寬度 */
-      height: auto; /* 讓高度根據寬度自適應 */
-      z-index: 9999;  /* 讓照片在最上層 */
-    }
+.profile-img {
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  width: 250px;
+  height: auto;
+  margin-top: 20px;
+}
+
     /* 保留的第二頁按鈕效果 */
     .flex-container {
       display: flex;
@@ -150,6 +148,13 @@
      color: #f8d200; /* 設置文本顏色為黃色 */
      }
 
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
   </style>
 </head>
 <body>
@@ -165,36 +170,36 @@
     </a>
     </a>
     <p>
-      <strong>個人風格:</strong><br>
-      神秘、低調。<br>
-      <br>
-      <strong>資歷:</strong><br>
-      專研魔術至今已超過10年。<br>
-      <br>
-       <strong>魔術專長:</strong><br>
-      心靈魔術、紙牌魔術、近距離魔術。<br>
-      <br>
-      <strong>經歷:</strong><br>
-      台灣科技大學魔術社心靈魔術講座講師<br>
-      朝陽科技大學魔術社心靈魔術講座講師<br>
-      中興大學魔術社心靈魔術講座講師<br>
-      勤益科技大學魔術社心靈魔術講座講師<br>
-      曾受邀飯店、壽司店、燒烤店等擔任桌邊魔術師<br>
+      <strong>個人風格:</strong>
+          <ul>
+          <li>神秘</li>
+	  <li>低調</li>
+          </ul>
+      
+      <strong>資歷:</strong>
+	  <ul>
+          <li>專研魔術至今已超過10年</li>
+	  </ul>
+       <strong>魔術專長:</strong>
+          <ul>
+          <li>心靈魔術</li>
+	  <li>紙牌魔術</li>
+          <li>近距離魔術</li>
+          </ul>
+
+      <strong>經歷:</strong>
+          <ul>
+            <li>台科大魔術社心靈魔術講座講師</li>
+            <li>朝陽科大魔術社心靈魔術講座講師</li>
+            <li>中興大學魔術社心靈魔術講座講師</li>
+            <li>勤益科大魔術社心靈魔術講座講師</li>
+            <li>曾受邀飯店、壽司店、燒烤店等擔任桌邊魔術師</li>
+          </ul>
       <br>
        <!-- 插入個人照片 -->
+        <div class="center-content">
         <img class="profile-img" src="個人照.jpg" alt="個人照片">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+        </div>
       <br>
     </p>
       </div>
