@@ -3,15 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>台灣心靈魔術與療癒學會-抽獎台</title>
+  <title>Facebook 抽獎小幫手</title>
   <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
@@ -46,33 +39,18 @@
       margin-bottom: 5px;
     }
 
-    textarea {
+    textarea, input[type="text"], input[type="number"] {
       width: 100%;
-      min-height: 200px;
       padding: 12px;
       font-size: 14px;
       border-radius: 10px;
       border: 1px solid #ccd6dd;
-      resize: vertical;
       outline: none;
       transition: border 0.2s;
+      margin-bottom: 10px;
     }
 
-    textarea:focus {
-      border-color: #1877f2;
-    }
-
-    input[type="number"], input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 14px;
-      border-radius: 10px;
-      border: 1px solid #ccd6dd;
-      outline: none;
-      transition: border 0.2s;
-    }
-
-    input:focus {
+    textarea:focus, input:focus {
       border-color: #1877f2;
     }
 
@@ -80,7 +58,7 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 15px;
+      margin-top: 10px;
     }
 
     button {
@@ -107,28 +85,22 @@
       border-radius: 12px;
       box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
       line-height: 1.6;
+      min-height: 50px;
+      font-size: 16px;
+      text-align: center;
     }
 
     .winner {
       font-weight: bold;
       color: #d9534f;
-      font-size: 18px;
+      font-size: 20px;
       margin: 5px 0;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
-      button {
-        flex: 100%;
-      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>台灣心靈魔術與療癒學會-抽獎台</h1>
+    <h1>🎉 Facebook 抽獎小幫手</h1>
     
     <label>請直接貼上 Facebook 留言內容：</label>
     <textarea id="rawComments" placeholder="把留言整段貼在這裡"></textarea>
@@ -157,16 +129,13 @@
         return;
       }
 
-      // 切行 + 忽略空白 & "已編輯"
       const lines = raw.split("\n")
                        .map(l => l.trim())
                        .filter(l => l && !l.includes("已編輯"));
 
       let parsed = [];
       for (let i = 0; i < lines.length; i++) {
-        if (i === 0 || (i % 4 === 0 && i !== 0)) {
-          parsed.push(lines[i]);
-        }
+        if (i === 0 || (i % 4 === 0 && i !== 0)) parsed.push(lines[i]);
       }
 
       uniqueNames = [...new Set(parsed)];
@@ -176,6 +145,7 @@
         uniqueNames.join(", ");
     }
 
+    // 抽獎動畫
     function draw() {
       const count = parseInt(document.getElementById("count").value);
       const prize = document.getElementById("prize").value.trim() || "未命名獎品";
@@ -190,18 +160,34 @@
         return;
       }
 
-      let pool = [...uniqueNames];
-      let winners = [];
-      for (let i = 0; i < count; i++) {
-        const index = Math.floor(Math.random() * pool.length);
-        winners.push(pool[index]);
-        pool.splice(index, 1);
-      }
+      // 動態滾動動畫
+      let animationIndex = 0;
+      const animationSpeed = 100; // 每100ms換一個名字
+      let displayNames = [];
 
-      resultDiv.innerHTML = 
-        `<h3>中獎名單 (${winners.length} 位)</h3>
-         <p>🏆 獎品：<b>${prize}</b></p>` +
-        winners.map(w => `<div class="winner">🎉 ${w}</div>`).join("");
+      const animationInterval = setInterval(() => {
+        const randomName = uniqueNames[Math.floor(Math.random() * uniqueNames.length)];
+        resultDiv.innerHTML = `<h3>正在抽獎中... 🏆 ${prize}</h3>
+                               <div class="winner">🎉 ${randomName}</div>`;
+        animationIndex++;
+        if (animationIndex > 20) { // 動畫跑20次
+          clearInterval(animationInterval);
+
+          // 真正抽出 winners
+          let pool = [...uniqueNames];
+          let winners = [];
+          for (let i = 0; i < count; i++) {
+            const idx = Math.floor(Math.random() * pool.length);
+            winners.push(pool[idx]);
+            pool.splice(idx, 1);
+          }
+
+          resultDiv.innerHTML = 
+            `<h3>中獎名單 (${winners.length} 位)</h3>
+             <p>🏆 獎品：<b>${prize}</b></p>` +
+            winners.map(w => `<div class="winner">🎉 ${w}</div>`).join("");
+        }
+      }, animationSpeed);
     }
   </script>
 </body>
